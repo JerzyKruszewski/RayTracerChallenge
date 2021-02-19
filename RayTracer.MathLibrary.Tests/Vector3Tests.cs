@@ -72,6 +72,7 @@ namespace RayTracer.MathLibrary.Tests
         [TestCase(2f, 2f, 2f, 1f, 1f, 1f, 2f)]
         [TestCase(3f, 3f, 3f, 2f, 2f, 2f, 1.5f)]
         [TestCase(3.5f, -7f, 10.5f, 1f, -2f, 3f, 3.5f)]
+        [TestCase(0.5f, -1f, 1.5f, 1f, -2f, 3f, 0.5f)]
         public void MultiplyOperator_WhenCalledWithPointAndScalar_ReturnMultipliedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                              float argX, float argY, float argZ, float scalar)
         {
@@ -95,6 +96,7 @@ namespace RayTracer.MathLibrary.Tests
         [Test]
         [TestCase(1f, 1f, 1f, 2f, 2f, 2f, 2f)]
         [TestCase(2f, 2f, 2f, 3f, 3f, 3f, 1.5f)]
+        [TestCase(0.5f, -1f, 1.5f, 1f, -2f, 3f, 2f)]
         public void DivideOperator_WhenCalledWithPointAndScalar_ReturnMultipliedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                            float argX, float argY, float argZ, float scalar)
         {
@@ -147,6 +149,8 @@ namespace RayTracer.MathLibrary.Tests
         [TestCase(1.414f, 1f, 0f, -1f, 0.002f)]
         [TestCase(1.75f, 1f, 1f, 1f, 0.03f)]
         [TestCase(5f, 4f, 0f, 3f, 0f)]
+        [TestCase(3.74165f, -1f, -2f, -3f, 0.00001f)]
+        [TestCase(3.74165f, 1f, 2f, 3f, 0.00001f)]
         public void Magnitude_WhenCalled_ReturnLenghtOfVector(float expected, float argX, float argY, float argZ, float epsilon)
         {
             Vector3 vector = new Vector3()
@@ -162,6 +166,8 @@ namespace RayTracer.MathLibrary.Tests
         [Test]
         [TestCase(-0.707f, -0.707f, 0f, -1f, -1f, 0f, 0.001f)]
         [TestCase(0f, 0.707f, 0.707f, 0f, 2f, 2f, 0.001f)]
+        [TestCase(1f, 0f, 0f, 4f, 0f, 0f, 0.00001f)]
+        [TestCase(0.26726f, 0.53452f, 0.80178f, 1f, 2f, 3f, 0.00001f)]
         public void Normalize_WhenCalledWithVector_ReturnNormalizedVector(float expectedX, float expectedY, float expectedZ,
                                                                           float argX, float argY, float argZ, float epsilon)
         {
@@ -180,6 +186,23 @@ namespace RayTracer.MathLibrary.Tests
             };
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, Vector3.Normalize(vector), epsilon));
+        }
+
+        [Test]
+        [TestCase(-1f, -1f, 0f, 0.001f)]
+        [TestCase(0f, 2f, 2f, 0.001f)]
+        [TestCase(4f, 0f, 0f, 0f)]
+        [TestCase(1f, 2f, 3f, 0.00001f)]
+        public void Normalize_WhenCalledWithVector_ChecksIfItsMagnitudeIs1(float argX, float argY, float argZ, float epsilon)
+        {
+            Vector3 vector = new Vector3()
+            {
+                X = argX,
+                Y = argY,
+                Z = argZ
+            };
+
+            Assert.AreEqual(1f, Vector3.Normalize(vector).Magnitude, epsilon);
         }
 
         [Test]

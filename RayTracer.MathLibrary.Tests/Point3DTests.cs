@@ -135,6 +135,7 @@ namespace RayTracer.MathLibrary.Tests
         [TestCase(2f, 2f, 2f, 1f, 1f, 1f, 2f)]
         [TestCase(3f, 3f, 3f, 2f, 2f, 2f, 1.5f)]
         [TestCase(3.5f, -7f, 10.5f, 1f, -2f, 3f, 3.5f)]
+        [TestCase(0.5f, -1f, 1.5f, 1f, -2f, 3f, 0.5f)]
         public void MultiplyOperator_WhenCalledWithPointAndScalar_ReturnMultipliedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                              float argX, float argY, float argZ, float scalar)
         {
@@ -158,6 +159,7 @@ namespace RayTracer.MathLibrary.Tests
         [Test]
         [TestCase(1f, 1f, 1f, 2f, 2f, 2f, 2f)]
         [TestCase(2f, 2f, 2f, 3f, 3f, 3f, 1.5f)]
+        [TestCase(0.5f, -1f, 1.5f, 1f, -2f, 3f, 2f)]
         public void DivideOperator_WhenCalledWithPointAndScalar_ReturnMultipliedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                            float argX, float argY, float argZ, float scalar)
         {
