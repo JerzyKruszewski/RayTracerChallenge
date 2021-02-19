@@ -49,5 +49,16 @@ namespace RayTracer.MathLibrary
                 Z = -vector.Z
             };
         }
+
+        public static Vector3 Normalize(Vector3 vector)
+        {
+            float lenght = vector.Magnitude;
+
+            vector.X /= lenght;
+            vector.Y /= lenght;
+            vector.Z /= lenght;
+
+            return vector;
+        }
     }
 }

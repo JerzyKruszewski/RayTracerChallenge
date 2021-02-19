@@ -35,7 +35,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point1 + point2));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, point1 + point2));
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point + vector));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, point + vector));
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point1 - point2));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, point1 - point2));
         }
 
         [Test]
@@ -128,7 +128,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point - vector));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, point - vector));
         }
 
         [Test]
@@ -152,7 +152,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = argZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point * scalar));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, point * scalar));
         }
 
         [Test]
@@ -175,7 +175,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = argZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point / scalar));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, point / scalar));
         }
     }
 }

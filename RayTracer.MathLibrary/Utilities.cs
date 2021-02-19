@@ -6,11 +6,11 @@ namespace RayTracer.MathLibrary
 {
     public class Utilities
     {
-        public static bool AreObjectEquals(IObjectIn3DSpace arg1, IObjectIn3DSpace arg2)
+        public static bool AreObjectEquals(IObjectIn3DSpace arg1, IObjectIn3DSpace arg2, float epsilon = 0.00001f)
         {
-            return MathHelper.AreNumbersEqual(arg1.X, arg2.X)
-                && MathHelper.AreNumbersEqual(arg1.Y, arg2.Y)
-                && MathHelper.AreNumbersEqual(arg1.Z, arg2.Z);
+            return MathHelper.AreNumbersEqual(arg1.X, arg2.X, epsilon)
+                && MathHelper.AreNumbersEqual(arg1.Y, arg2.Y, epsilon)
+                && MathHelper.AreNumbersEqual(arg1.Z, arg2.Z, epsilon);
         }
 
         public static IObjectIn3DSpace AddCordinates(IObjectIn3DSpace origin, IObjectIn3DSpace arg)

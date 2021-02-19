@@ -34,7 +34,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector1 + vector2));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, vector1 + vector2));
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector1 - vector2));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, vector1 - vector2));
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = argZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector * scalar));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, vector * scalar));
         }
 
         [Test]
@@ -112,7 +112,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = argZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector / scalar));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, vector / scalar));
         }
 
         [Test]
@@ -136,7 +136,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = argZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, Vector3.NegateVector(vector)));
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, Vector3.NegateVector(vector)));
         }
 
         [Test]
@@ -147,7 +147,7 @@ namespace RayTracer.MathLibrary.Tests
         [TestCase(1.414f, 1f, 0f, -1f, 0.002f)]
         [TestCase(1.75f, 1f, 1f, 1f, 0.03f)]
         [TestCase(5f, 4f, 0f, 3f, 0f)]
-        public void GetMagnitude_WhenCalled_ReturnLenghtOfVector(float expected, float argX, float argY, float argZ, float epsilon)
+        public void Magnitude_WhenCalled_ReturnLenghtOfVector(float expected, float argX, float argY, float argZ, float epsilon)
         {
             Vector3 vector = new Vector3()
             {
@@ -157,6 +157,29 @@ namespace RayTracer.MathLibrary.Tests
             };
 
             Assert.AreEqual(expected, vector.Magnitude, epsilon);
+        }
+
+        [Test]
+        [TestCase(-0.707f, -0.707f, 0f, -1f, -1f, 0f, 0.001f)]
+        [TestCase(0f, 0.707f, 0.707f, 0f, 2f, 2f, 0.001f)]
+        public void Normalize_WhenCalledWithVector_ReturnNormalizedVector(float expectedX, float expectedY, float expectedZ,
+                                                                          float argX, float argY, float argZ, float epsilon)
+        {
+            Vector3 expected = new Vector3()
+            {
+                X = expectedX,
+                Y = expectedY,
+                Z = expectedZ
+            };
+
+            Vector3 vector = new Vector3()
+            {
+                X = argX,
+                Y = argY,
+                Z = argZ
+            };
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, Vector3.Normalize(vector), epsilon));
         }
     }
 }
