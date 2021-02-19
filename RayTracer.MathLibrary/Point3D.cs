@@ -27,9 +27,9 @@ namespace RayTracer.MathLibrary
             return (Point3D)Utilities.SubtractCordinates(origin, vector);
         }
 
-        public static Point3D operator -(Point3D origin, Point3D point)
+        public static Vector3 operator -(Point3D origin, Point3D point)
         {
-            return (Point3D)Utilities.SubtractCordinates(origin, point);
+            return Utilities.CastPointToVector((Point3D)Utilities.SubtractCordinates(origin, point));
         }
 
         public static Point3D operator *(Point3D origin, float scalar)

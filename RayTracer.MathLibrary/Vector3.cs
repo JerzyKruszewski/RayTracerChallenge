@@ -31,5 +31,15 @@ namespace RayTracer.MathLibrary
         {
             return (Vector3)Utilities.DivideCordinatesByScalar(origin, scalar);
         }
+
+        public static Vector3 NegateVector(Vector3 vector)
+        {
+            return new Vector3()
+            {
+                X = -vector.X,
+                Y = -vector.Y,
+                Z = -vector.Z
+            };
+        }
     }
 }

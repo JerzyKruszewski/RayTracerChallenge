@@ -111,5 +111,28 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector / scalar));
         }
+
+        [Test]
+        [TestCase(1f, 1f, 1f, -1f, -1f, -1f)]
+        [TestCase(-2f, -2f, -2f, 2f, 2f, 2f)]
+        public void NegateVector_WhenCalledWithVector_ReturnVectorWithOppositeCordinates(float expectedX, float expectedY, float expectedZ,
+                                                                                         float argX, float argY, float argZ)
+        {
+            Vector3 expected = new Vector3()
+            {
+                X = expectedX,
+                Y = expectedY,
+                Z = expectedZ
+            };
+
+            Vector3 vector = new Vector3()
+            {
+                X = argX,
+                Y = argY,
+                Z = argZ
+            };
+
+            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, Vector3.NegateVector(vector)));
+        }
     }
 }

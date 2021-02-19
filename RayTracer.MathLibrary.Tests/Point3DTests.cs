@@ -87,7 +87,7 @@ namespace RayTracer.MathLibrary.Tests
                 Z = arg2Z
             };
 
-            Point3D expected = new Point3D()
+            Vector3 expected = new Vector3()
             {
                 X = expectedX,
                 Y = expectedY,

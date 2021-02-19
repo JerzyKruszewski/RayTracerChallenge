@@ -48,5 +48,15 @@ namespace RayTracer.MathLibrary
 
             return origin;
         }
+
+        public static Vector3 CastPointToVector(Point3D point)
+        {
+            return new Vector3()
+            {
+                X = point.X,
+                Y = point.Y,
+                Z = point.Z
+            };
+        }
     }
 }
