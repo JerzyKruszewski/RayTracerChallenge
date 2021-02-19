@@ -12,6 +12,14 @@ namespace RayTracer.MathLibrary
 
         public float Z { get; set; }
 
+        public float Magnitude
+        {
+            get
+            {
+                return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
+            }
+        }
+
         public static Vector3 operator +(Vector3 origin, Vector3 vector)
         {
             return (Vector3)Utilities.AddCordinates(origin, vector);

@@ -138,5 +138,25 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.AreEqual(true, Utilities.AreObjectEquals(expected, Vector3.NegateVector(vector)));
         }
+
+        [Test]
+        [TestCase(1f, 1f, 0f, 0f, 0f)]
+        [TestCase(1f, 0f, -1f, 0f, 0f)]
+        [TestCase(1f, 0f, 0f, 1f, 0f)]
+        [TestCase(1.414f, 1f, 1f, 0f, 0.002f)]
+        [TestCase(1.414f, 1f, 0f, -1f, 0.002f)]
+        [TestCase(1.75f, 1f, 1f, 1f, 0.03f)]
+        [TestCase(5f, 4f, 0f, 3f, 0f)]
+        public void GetMagnitude_WhenCalled_ReturnLenghtOfVector(float expected, float argX, float argY, float argZ, float epsilon)
+        {
+            Vector3 vector = new Vector3()
+            {
+                X = argX,
+                Y = argY,
+                Z = argZ
+            };
+
+            Assert.AreEqual(expected, vector.Magnitude, epsilon);
+        }
     }
 }
