@@ -181,5 +181,60 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, Vector3.Normalize(vector), epsilon));
         }
+
+        [Test]
+        [TestCase(20f, 1f, 2f, 3f, 2f, 3f, 4f)]
+        [TestCase(20f, 2f, 3f, 4f, 1f, 2f, 3f)]
+        public void Dot_WhenCalledWithTwoVectors_ReturnDotProduct(float expected,
+                                                                  float arg1X, float arg1Y, float arg1Z,
+                                                                  float arg2X, float arg2Y, float arg2Z)
+        {
+            Vector3 vector1 = new Vector3()
+            {
+                X = arg1X,
+                Y = arg1Y,
+                Z = arg1Z
+            };
+
+            Vector3 vector2 = new Vector3()
+            {
+                X = arg2X,
+                Y = arg2Y,
+                Z = arg2Z
+            };
+
+            Assert.AreEqual(expected, Vector3.Dot(vector1, vector2));
+        }
+
+        [Test]
+        [TestCase(-1f, 2f, -1f, 1f, 2f, 3f, 2f, 3f, 4f)]
+        [TestCase(1f, -2f, 1f, 2f, 3f, 4f, 1f, 2f, 3f)]
+        public void Cross_WhenCalledWithTwoVectors_ReturnCrossProduct(float expectedX, float expectedY, float expectedZ,
+                                                                      float arg1X, float arg1Y, float arg1Z,
+                                                                      float arg2X, float arg2Y, float arg2Z)
+        {
+            Vector3 vector1 = new Vector3()
+            {
+                X = arg1X,
+                Y = arg1Y,
+                Z = arg1Z
+            };
+
+            Vector3 vector2 = new Vector3()
+            {
+                X = arg2X,
+                Y = arg2Y,
+                Z = arg2Z
+            };
+
+            Vector3 expected = new Vector3()
+            {
+                X = expectedX,
+                Y = expectedY,
+                Z = expectedZ
+            };
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, Vector3.Cross(vector1, vector2)));
+        }
     }
 }

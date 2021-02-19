@@ -60,5 +60,20 @@ namespace RayTracer.MathLibrary
 
             return vector;
         }
+
+        public static float Dot(Vector3 arg1, Vector3 arg2)
+        {
+            return arg1.X * arg2.X + arg1.Y * arg2.Y + arg1.Z * arg2.Z;
+        }
+
+        public static Vector3 Cross(Vector3 arg1, Vector3 arg2)
+        {
+            return new Vector3()
+            {
+                X = arg1.Y * arg2.Z - arg1.Z * arg2.Y,
+                Y = arg1.Z * arg2.X - arg1.X * arg2.Z,
+                Z = arg1.X * arg2.Y - arg1.Y * arg2.X
+            };
+        }
     }
 }
