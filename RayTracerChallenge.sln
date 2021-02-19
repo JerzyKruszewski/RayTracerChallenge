@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.MathLibrary", "RayTracer.MathLibrary\RayTracer.MathLibrary.csproj", "{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.MathLibrary.Tests", "RayTracer.MathLibrary.Tests\RayTracer.MathLibrary.Tests.csproj", "{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4CF5206-E920-456D-B047-D1003167D157}
+	EndGlobalSection
+EndGlobal
