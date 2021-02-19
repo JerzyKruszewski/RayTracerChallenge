@@ -12,9 +12,24 @@ namespace RayTracer.MathLibrary
 
         public float Z { get; set; }
 
-        public static Vector3 operator+(Vector3 origin, Vector3 vector)
+        public static Vector3 operator +(Vector3 origin, Vector3 vector)
         {
             return (Vector3)Utilities.AddCordinates(origin, vector);
+        }
+
+        public static Vector3 operator -(Vector3 origin, Vector3 vector)
+        {
+            return (Vector3)Utilities.SubtractCordinates(origin, vector);
+        }
+
+        public static Vector3 operator *(Vector3 origin, float scalar)
+        {
+            return (Vector3)Utilities.MultiplyCordinatesByScalar(origin, scalar);
+        }
+
+        public static Vector3 operator /(Vector3 origin, float scalar)
+        {
+            return (Vector3)Utilities.DivideCordinatesByScalar(origin, scalar);
         }
     }
 }

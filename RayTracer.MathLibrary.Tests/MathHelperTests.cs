@@ -11,28 +11,28 @@ namespace RayTracer.MathLibrary.Tests
         }
 
         [Test]
-        [TestCase(0, 0, 0)]
+        [TestCase(0f, 0f, 0f)]
         public void CreateObjectIn3DSpace_WhenCalledWithPointCordinates_DoesCreatePoint(float x, float y, float z)
         {
             Assert.IsInstanceOf<Point3D>(MathHelper.CreateObjectIn3DSpace(Tuple.Create<float, float, float, float>(x, y, z, 1.0f)));
         }
 
         [Test]
-        [TestCase(0, 0, 0)]
+        [TestCase(0f, 0f, 0f)]
         public void CreateObjectIn3DSpace_WhenCalledWithPointCordinates_DoesNotCreateVector(float x, float y, float z)
         {
             Assert.IsNotInstanceOf<Vector3>(MathHelper.CreateObjectIn3DSpace(Tuple.Create<float, float, float, float>(x, y, z, 1.0f)));
         }
 
         [Test]
-        [TestCase(0, 0, 0)]
+        [TestCase(0f, 0f, 0f)]
         public void CreateObjectIn3DSpace_WhenCalledWithVectorCordinates_DoesCreateVector(float x, float y, float z)
         {
             Assert.IsInstanceOf<Vector3>(MathHelper.CreateObjectIn3DSpace(Tuple.Create<float, float, float, float>(x, y, z, 0.0f)));
         }
 
         [Test]
-        [TestCase(0, 0, 0)]
+        [TestCase(0f, 0f, 0f)]
         public void CreateObjectIn3DSpace_WhenCalledWithVectorCordinates_DoesNotCreatePoint(float x, float y, float z)
         {
             Assert.IsNotInstanceOf<Point3D>(MathHelper.CreateObjectIn3DSpace(Tuple.Create<float, float, float, float>(x, y, z, 0.0f)));

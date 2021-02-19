@@ -1,11 +1,10 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using NUnit.Framework;
 
 namespace RayTracer.MathLibrary.Tests
 {
-    public class Point3DTests
+    public class Vector3Tests
     {
         [Test]
         [TestCase(1f, -1f, 0f, 0f, 0f, 1f, 1f, -1f, -1f)]
@@ -13,58 +12,28 @@ namespace RayTracer.MathLibrary.Tests
                                                                                                float arg1X, float arg1Y, float arg1Z,
                                                                                                float arg2X, float arg2Y, float arg2Z)
         {
-            Point3D point1 = new Point3D()
+            Vector3 vector1 = new Vector3()
             {
                 X = arg1X,
                 Y = arg1Y,
                 Z = arg1Z
             };
 
-            Point3D point2 = new Point3D()
+            Vector3 vector2 = new Vector3()
             {
                 X = arg2X,
                 Y = arg2Y,
                 Z = arg2Z
             };
 
-            Point3D expected = new Point3D()
+            Vector3 expected = new Vector3()
             {
                 X = expectedX,
                 Y = expectedY,
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point1 + point2));
-        }
-
-        [Test]
-        [TestCase(1f, -1f, 0f, 0f, 0f, 1f, 1f, -1f, -1f)]
-        public void AdditionOperator_WhenCalledWithPointAndVector_ReturnPointWithCombinedCordinates(float expectedX, float expectedY, float expectedZ,
-                                                                                                    float arg1X, float arg1Y, float arg1Z,
-                                                                                                    float arg2X, float arg2Y, float arg2Z)
-        {
-            Point3D point = new Point3D()
-            {
-                X = arg1X,
-                Y = arg1Y,
-                Z = arg1Z
-            };
-
-            Vector3 vector = new Vector3()
-            {
-                X = arg2X,
-                Y = arg2Y,
-                Z = arg2Z
-            };
-
-            Point3D expected = new Point3D()
-            {
-                X = expectedX,
-                Y = expectedY,
-                Z = expectedZ
-            };
-
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point + vector));
+            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector1 + vector2));
         }
 
         [Test]
@@ -73,58 +42,28 @@ namespace RayTracer.MathLibrary.Tests
                                                                                                     float arg1X, float arg1Y, float arg1Z,
                                                                                                     float arg2X, float arg2Y, float arg2Z)
         {
-            Point3D point1 = new Point3D()
+            Vector3 vector1 = new Vector3()
             {
                 X = arg1X,
                 Y = arg1Y,
                 Z = arg1Z
             };
 
-            Point3D point2 = new Point3D()
+            Vector3 vector2 = new Vector3()
             {
                 X = arg2X,
                 Y = arg2Y,
                 Z = arg2Z
             };
 
-            Point3D expected = new Point3D()
+            Vector3 expected = new Vector3()
             {
                 X = expectedX,
                 Y = expectedY,
                 Z = expectedZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point1 - point2));
-        }
-
-        [Test]
-        [TestCase(-1f, 1f, 2f, 0f, 0f, 1f, 1f, -1f, -1f)]
-        public void SubtractionOperator_WhenCalledWithPointAndVector_ReturnPointWithSubtractedCordinates(float expectedX, float expectedY, float expectedZ,
-                                                                                                         float arg1X, float arg1Y, float arg1Z,
-                                                                                                         float arg2X, float arg2Y, float arg2Z)
-        {
-            Point3D point = new Point3D()
-            {
-                X = arg1X,
-                Y = arg1Y,
-                Z = arg1Z
-            };
-
-            Vector3 vector = new Vector3()
-            {
-                X = arg2X,
-                Y = arg2Y,
-                Z = arg2Z
-            };
-
-            Point3D expected = new Point3D()
-            {
-                X = expectedX,
-                Y = expectedY,
-                Z = expectedZ
-            };
-
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point - vector));
+            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector1 - vector2));
         }
 
         [Test]
@@ -133,21 +72,21 @@ namespace RayTracer.MathLibrary.Tests
         public void MultiplyOperator_WhenCalledWithPointAndScalar_ReturnMultipliedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                              float argX, float argY, float argZ, float scalar)
         {
-            Point3D expected = new Point3D()
+            Vector3 expected = new Vector3()
             {
                 X = expectedX,
                 Y = expectedY,
                 Z = expectedZ
             };
 
-            Point3D point = new Point3D()
+            Vector3 vector = new Vector3()
             {
                 X = argX,
                 Y = argY,
                 Z = argZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point * scalar));
+            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector * scalar));
         }
 
         [Test]
@@ -156,21 +95,21 @@ namespace RayTracer.MathLibrary.Tests
         public void DivideOperator_WhenCalledWithPointAndScalar_ReturnMultipliedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                            float argX, float argY, float argZ, float scalar)
         {
-            Point3D expected = new Point3D()
+            Vector3 expected = new Vector3()
             {
                 X = expectedX,
                 Y = expectedY,
                 Z = expectedZ
             };
 
-            Point3D point = new Point3D()
+            Vector3 vector = new Vector3()
             {
                 X = argX,
                 Y = argY,
                 Z = argZ
             };
 
-            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, point / scalar));
+            Assert.AreEqual(true, Utilities.AreObjectEquals(expected, vector / scalar));
         }
     }
 }
