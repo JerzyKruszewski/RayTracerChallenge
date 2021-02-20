@@ -9,6 +9,7 @@ namespace RayTracer.MathLibrary.Tests
         [Test]
         [TestCase(1f, -1f, 0f, 0f, 0f, 1f, 1f, -1f, -1f)]
         [TestCase(1f, 1f, 6f, 3f, -2f, 5f, -2f, 3f, 1f)]
+        [TestCase(0f, -4f, 0f, 0f, 0f, 0f, 0f, -4f, 0f)]
         public void AdditionOperator_WhenCalledWithTwoPoints_ReturnPointWithCombinedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                                float arg1X, float arg1Y, float arg1Z,
                                                                                                float arg2X, float arg2Y, float arg2Z)
@@ -40,6 +41,7 @@ namespace RayTracer.MathLibrary.Tests
         [Test]
         [TestCase(-1f, 1f, 2f, 0f, 0f, 1f, 1f, -1f, -1f)]
         [TestCase(-2f, -4f, -6f, 3f, 2f, 1f, 5f, 6f, 7f)]
+        [TestCase(0f, -4f, 0f, 0f, 0f, 0f, 0f, 4f, 0f)]
         public void SubtractionOperator_WhenCalledWithTwoPoints_ReturnPointWithSubtractedCordinates(float expectedX, float expectedY, float expectedZ,
                                                                                                     float arg1X, float arg1Y, float arg1Z,
                                                                                                     float arg2X, float arg2Y, float arg2Z)
