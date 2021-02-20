@@ -149,5 +149,18 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.IsTrue(Color.AreColorsEqual(expected, color * scalar));
         }
+
+        [Test]
+        [TestCase(255, 2f)]
+        [TestCase(255, 1f)]
+        [TestCase(204, 0.8f)]
+        [TestCase(153, 0.6f)]
+        [TestCase(128, 0.5f)]
+        [TestCase(0, 0f)]
+        [TestCase(0, -1f)]
+        public void ConvertColorValueToByte_WhenCalled_ReturnsColorValueIn8BitInteger(int expected, float color)
+        {
+            Assert.AreEqual(expected, Color.ConvertColorValueToByte(color));
+        }
     }
 }

@@ -66,5 +66,17 @@ namespace RayTracer.MathLibrary
                 && MathHelper.AreNumbersEqual(color1.Green, color2.Green, epsilon)
                 && MathHelper.AreNumbersEqual(color1.Blue, color2.Blue, epsilon);
         }
+
+        public static int ConvertColorValueToByte(float color)
+        {
+            color *= 255;
+
+            if (color - (int)color >= 0.5f)
+            {
+                return Math.Min(Math.Max(0, (int)color + 1), 255);
+            }
+
+            return Math.Min(Math.Max(0, (int)color), 255);
+        }
     }
 }

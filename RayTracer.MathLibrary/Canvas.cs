@@ -6,7 +6,7 @@ namespace RayTracer.MathLibrary
 {
     public class Canvas
     {
-        private Color[,] _canvas;
+        private readonly Color[,] _canvas;
 
         public int Width { get; set; }
 
