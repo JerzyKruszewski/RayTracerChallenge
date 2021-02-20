@@ -20,6 +20,18 @@ namespace RayTracer.MathLibrary
             }
         }
 
+        public Vector3()
+        {
+
+        }
+
+        public Vector3(float x, float y, float z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
         public static Vector3 operator +(Vector3 origin, Vector3 vector)
         {
             return (Vector3)Utilities.AddCordinates(origin, vector);
