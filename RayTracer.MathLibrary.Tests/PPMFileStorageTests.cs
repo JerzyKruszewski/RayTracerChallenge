@@ -13,7 +13,14 @@ namespace RayTracer.MathLibrary.Tests
         {
             Canvas canvas = new Canvas(width, height);
 
-            string ppmContent = PPMFileStorage.CanvasToPPMFile(canvas.GetCanvas());
+            string ppmContent = "";
+
+            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas.GetCanvas());
+
+            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
+            {
+                ppmContent = reader.ReadToEnd();
+            }
 
             Assert.IsTrue(ppmContent.StartsWith($"P3{Environment.NewLine}{width} {height}{Environment.NewLine}255{Environment.NewLine}"));
         }
@@ -24,7 +31,14 @@ namespace RayTracer.MathLibrary.Tests
         {
             Canvas canvas = new Canvas(width, height);
 
-            string ppmContent = PPMFileStorage.CanvasToPPMFile(canvas.GetCanvas());
+            string ppmContent = "";
+
+            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas.GetCanvas());
+
+            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
+            {
+                ppmContent = reader.ReadToEnd();
+            }
 
             Assert.IsTrue(ppmContent.EndsWith(Environment.NewLine));
         }
@@ -48,7 +62,16 @@ namespace RayTracer.MathLibrary.Tests
             canvas.WritePixel(2, 1, color2);
             canvas.WritePixel(4, 2, color3);
 
-            Assert.AreEqual(expected, PPMFileStorage.CanvasToPPMFile(canvas.GetCanvas()));
+            string ppmContent = "";
+
+            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas.GetCanvas());
+
+            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
+            {
+                ppmContent = reader.ReadToEnd();
+            }
+
+            Assert.AreEqual(expected, ppmContent);
         }
 
         [Test]
@@ -75,30 +98,16 @@ namespace RayTracer.MathLibrary.Tests
                 }
             }
 
-            Assert.AreEqual(expected, PPMFileStorage.CanvasToPPMFile(canvas1.GetCanvas()));
-        }
+            string ppmContent = "";
 
-        [Test]
-        public void SavePPMFile_WhenCalled_CreateAFileWithContent()
-        {
-            string fileContent = "";
-            string expected = @"P3
-10 2
-255
-255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204
-153 255 204 153 255 204 153 255 204 153 255 204 153
-255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204
-153 255 204 153 255 204 153 255 204 153 255 204 153
-";
-
-            PPMFileStorage.SavePPMFile("test", expected);
+            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas);
 
             using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
             {
-                fileContent = reader.ReadToEnd();
+                ppmContent = reader.ReadToEnd();
             }
 
-            Assert.AreEqual(expected, fileContent);
+            Assert.AreEqual(expected, ppmContent);
         }
     }
 }
