@@ -15,9 +15,9 @@ namespace RayTracer.MathLibrary.Tests
 
             string ppmContent = "";
 
-            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas.GetCanvas());
+            PPMFileStorage.CanvasToPPMFile("test1", canvas.GetCanvas());
 
-            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
+            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test1.ppm"))
             {
                 ppmContent = reader.ReadToEnd();
             }
@@ -33,9 +33,9 @@ namespace RayTracer.MathLibrary.Tests
 
             string ppmContent = "";
 
-            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas.GetCanvas());
+            PPMFileStorage.CanvasToPPMFile("test2", canvas.GetCanvas());
 
-            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
+            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test2.ppm"))
             {
                 ppmContent = reader.ReadToEnd();
             }
@@ -64,9 +64,9 @@ namespace RayTracer.MathLibrary.Tests
 
             string ppmContent = "";
 
-            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas.GetCanvas());
+            PPMFileStorage.CanvasToPPMFile("test3", canvas.GetCanvas());
 
-            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
+            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test3.ppm"))
             {
                 ppmContent = reader.ReadToEnd();
             }
@@ -100,9 +100,9 @@ namespace RayTracer.MathLibrary.Tests
 
             string ppmContent = "";
 
-            PPMFileStorage.CanvasToPPMFile("./test.ppm", canvas);
+            PPMFileStorage.CanvasToPPMFile("test4", canvas);
 
-            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test.ppm"))
+            using (System.IO.StreamReader reader = new System.IO.StreamReader("./test4.ppm"))
             {
                 ppmContent = reader.ReadToEnd();
             }
