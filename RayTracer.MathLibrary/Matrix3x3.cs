@@ -32,6 +32,19 @@ namespace RayTracer.MathLibrary
             };
         }
 
+        public float Det
+        {
+            get
+            {
+                return _matrix[0, 0] * _matrix[1, 1] * _matrix[2, 2] +
+                       _matrix[1, 0] * _matrix[2, 1] * _matrix[0, 2] +
+                       _matrix[2, 0] * _matrix[0, 1] * _matrix[1, 2] -
+                       _matrix[0, 2] * _matrix[1, 1] * _matrix[2, 0] -
+                       _matrix[1, 2] * _matrix[2, 1] * _matrix[0, 0] -
+                       _matrix[2, 2] * _matrix[0, 1] * _matrix[1, 0];
+            }
+        }
+
         //Test
         public static Matrix3x3 operator *(Matrix3x3 matrixA, Matrix3x3 matrixB)
         {
@@ -100,6 +113,21 @@ namespace RayTracer.MathLibrary
             }
 
             return false;
+        }
+
+        public static Matrix3x3 Transpose(Matrix3x3 matrix)
+        {
+            Matrix3x3 result = new Matrix3x3();
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    result._matrix[j, i] = matrix._matrix[i, j];
+                }
+            }
+
+            return result;
         }
     }
 }
