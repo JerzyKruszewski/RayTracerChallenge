@@ -26,38 +26,22 @@ namespace RayTracer.MathLibrary
 
         public static Color operator +(Color color1, Color color2)
         {
-            color1.Red += color2.Red;
-            color1.Green += color2.Green;
-            color1.Blue += color2.Blue;
-
-            return color1;
+            return new Color(color1.Red + color2.Red, color1.Green + color2.Green, color1.Blue + color2.Blue);
         }
 
         public static Color operator -(Color color1, Color color2)
         {
-            color1.Red -= color2.Red;
-            color1.Green -= color2.Green;
-            color1.Blue -= color2.Blue;
-
-            return color1;
+            return new Color(color1.Red - color2.Red, color1.Green - color2.Green, color1.Blue - color2.Blue);
         }
 
         public static Color operator *(Color color1, Color color2)
         {
-            color1.Red *= color2.Red;
-            color1.Green *= color2.Green;
-            color1.Blue *= color2.Blue;
-
-            return color1;
+            return new Color(color1.Red * color2.Red, color1.Green * color2.Green, color1.Blue * color2.Blue);
         }
 
         public static Color operator *(Color color, float scalar)
         {
-            color.Red *= scalar;
-            color.Green *= scalar;
-            color.Blue *= scalar;
-
-            return color;
+            return new Color(color.Red * scalar, color.Green * scalar, color.Blue * scalar);
         }
 
         public static bool AreColorsEqual(Color color1, Color color2, float epsilon = 0.00001f)

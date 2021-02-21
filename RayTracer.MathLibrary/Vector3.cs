@@ -34,22 +34,22 @@ namespace RayTracer.MathLibrary
 
         public static Vector3 operator +(Vector3 origin, Vector3 vector)
         {
-            return (Vector3)Utilities.AddCordinates(origin, vector);
+            return new Vector3(origin.X + vector.X, origin.Y + vector.Y, origin.Z + vector.Z);
         }
 
         public static Vector3 operator -(Vector3 origin, Vector3 vector)
         {
-            return (Vector3)Utilities.SubtractCordinates(origin, vector);
+            return new Vector3(origin.X - vector.X, origin.Y - vector.Y, origin.Z - vector.Z);
         }
 
         public static Vector3 operator *(Vector3 origin, float scalar)
         {
-            return (Vector3)Utilities.MultiplyCordinatesByScalar(origin, scalar);
+            return new Vector3(origin.X * scalar, origin.Y * scalar, origin.Z * scalar);
         }
 
         public static Vector3 operator /(Vector3 origin, float scalar)
         {
-            return (Vector3)Utilities.DivideCordinatesByScalar(origin, scalar);
+            return new Vector3(origin.X / scalar, origin.Y / scalar, origin.Z / scalar);
         }
 
         public static Vector3 NegateVector(Vector3 vector)

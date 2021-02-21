@@ -26,32 +26,32 @@ namespace RayTracer.MathLibrary
 
         public static Point3D operator +(Point3D origin, Vector3 vector)
         {
-            return (Point3D)Utilities.AddCordinates(origin, vector);
+            return new Point3D(origin.X + vector.X, origin.Y + vector.Y, origin.Z + vector.Z);
         }
 
         public static Point3D operator +(Point3D origin, Point3D point)
         {
-            return (Point3D)Utilities.AddCordinates(origin, point);
+            return new Point3D(origin.X + point.X, origin.Y + point.Y, origin.Z + point.Z);
         }
 
         public static Point3D operator -(Point3D origin, Vector3 vector)
         {
-            return (Point3D)Utilities.SubtractCordinates(origin, vector);
+            return new Point3D(origin.X - vector.X, origin.Y - vector.Y, origin.Z - vector.Z);
         }
 
         public static Vector3 operator -(Point3D origin, Point3D point)
         {
-            return Utilities.CastPointToVector((Point3D)Utilities.SubtractCordinates(origin, point));
+            return new Vector3(origin.X - point.X, origin.Y - point.Y, origin.Z - point.Z);
         }
 
         public static Point3D operator *(Point3D origin, float scalar)
         {
-            return (Point3D)Utilities.MultiplyCordinatesByScalar(origin, scalar);
+            return new Point3D(origin.X * scalar, origin.Y * scalar, origin.Z * scalar);
         }
 
         public static Point3D operator /(Point3D origin, float scalar)
         {
-            return (Point3D)Utilities.DivideCordinatesByScalar(origin, scalar);
+            return new Point3D(origin.X / scalar, origin.Y / scalar, origin.Z / scalar);
         }
     }
 }

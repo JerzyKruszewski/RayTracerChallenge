@@ -45,8 +45,7 @@ namespace CannonTestProject
                 System.Environment.Exit(0);
             }
             projectile.Point += projectile.Velocity;
-            projectile.Velocity += environment.Gravity;
-            projectile.Velocity += environment.Wind;
+            projectile.Velocity += environment.Gravity + environment.Wind;
         }
     }
 }
