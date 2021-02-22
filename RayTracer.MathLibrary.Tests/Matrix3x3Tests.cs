@@ -127,7 +127,7 @@ namespace RayTracer.MathLibrary.Tests
                   7f, 8f, 9f,
                   1f, 2f, 3f,
                   4f, 5f, 6f,
-                  7f, 8f, 9f)]
+                  7f, 8f, 10f)]
         public void MatrixCompare_WhenCalledWith2DifferentMatrixes_ReturnIfMatrixesAreDifferent(double argA00, double argA01, double argA02,
                                                                                                 double argA10, double argA11, double argA12,
                                                                                                 double argA20, double argA21, double argA22,

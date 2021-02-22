@@ -105,7 +105,7 @@ namespace RayTracer.MathLibrary
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (MathHelper.AreNumbersEqual(matrixA._matrix[i, j], matrixB._matrix[i, j]))
+                    if (!MathHelper.AreNumbersEqual(matrixA._matrix[i, j], matrixB._matrix[i, j]))
                     {
                         return true;
                     }
