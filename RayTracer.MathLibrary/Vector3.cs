@@ -6,17 +6,17 @@ namespace RayTracer.MathLibrary
 {
     public class Vector3 : IObjectIn3DSpace
     {
-        public float X { get; set; }
+        public double X { get; set; }
 
-        public float Y { get; set; }
+        public double Y { get; set; }
 
-        public float Z { get; set; }
+        public double Z { get; set; }
 
-        public float Magnitude
+        public double Magnitude
         {
             get
             {
-                return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
+                return (double)Math.Sqrt(X * X + Y * Y + Z * Z);
             }
         }
 
@@ -25,7 +25,7 @@ namespace RayTracer.MathLibrary
 
         }
 
-        public Vector3(float x, float y, float z)
+        public Vector3(double x, double y, double z)
         {
             X = x;
             Y = y;
@@ -42,12 +42,12 @@ namespace RayTracer.MathLibrary
             return new Vector3(origin.X - vector.X, origin.Y - vector.Y, origin.Z - vector.Z);
         }
 
-        public static Vector3 operator *(Vector3 origin, float scalar)
+        public static Vector3 operator *(Vector3 origin, double scalar)
         {
             return new Vector3(origin.X * scalar, origin.Y * scalar, origin.Z * scalar);
         }
 
-        public static Vector3 operator /(Vector3 origin, float scalar)
+        public static Vector3 operator /(Vector3 origin, double scalar)
         {
             return new Vector3(origin.X / scalar, origin.Y / scalar, origin.Z / scalar);
         }
@@ -64,7 +64,7 @@ namespace RayTracer.MathLibrary
 
         public static Vector3 Normalize(Vector3 vector)
         {
-            float lenght = vector.Magnitude;
+            double lenght = vector.Magnitude;
 
             vector.X /= lenght;
             vector.Y /= lenght;
@@ -73,7 +73,7 @@ namespace RayTracer.MathLibrary
             return vector;
         }
 
-        public static float Dot(Vector3 arg1, Vector3 arg2)
+        public static double Dot(Vector3 arg1, Vector3 arg2)
         {
             return arg1.X * arg2.X + arg1.Y * arg2.Y + arg1.Z * arg2.Z;
         }

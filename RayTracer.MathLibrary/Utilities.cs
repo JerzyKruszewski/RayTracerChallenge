@@ -6,7 +6,7 @@ namespace RayTracer.MathLibrary
 {
     public class Utilities
     {
-        public static bool AreObjectEquals(IObjectIn3DSpace arg1, IObjectIn3DSpace arg2, float epsilon = 0.00001f)
+        public static bool AreObjectEquals(IObjectIn3DSpace arg1, IObjectIn3DSpace arg2, double epsilon = 0.00001f)
         {
             return MathHelper.AreNumbersEqual(arg1.X, arg2.X, epsilon)
                 && MathHelper.AreNumbersEqual(arg1.Y, arg2.Y, epsilon)
@@ -31,7 +31,7 @@ namespace RayTracer.MathLibrary
             return origin;
         }
 
-        public static IObjectIn3DSpace MultiplyCordinatesByScalar(IObjectIn3DSpace origin, float scalar)
+        public static IObjectIn3DSpace MultiplyCordinatesByScalar(IObjectIn3DSpace origin, double scalar)
         {
             origin.X *= scalar;
             origin.Y *= scalar;
@@ -40,7 +40,7 @@ namespace RayTracer.MathLibrary
             return origin;
         }
 
-        public static IObjectIn3DSpace DivideCordinatesByScalar(IObjectIn3DSpace origin, float scalar)
+        public static IObjectIn3DSpace DivideCordinatesByScalar(IObjectIn3DSpace origin, double scalar)
         {
             origin.X /= scalar;
             origin.Y /= scalar;

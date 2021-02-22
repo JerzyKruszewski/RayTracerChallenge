@@ -8,7 +8,7 @@ namespace RayTracer.MathLibrary.Tests
     {
         [Test]
         [TestCase(0f, 0f, 0f)]
-        public void CastPointToVector_WhenCalledWithPoint_CastItToVector(float argX, float argY, float argZ)
+        public void CastPointToVector_WhenCalledWithPoint_CastItToVector(double argX, double argY, double argZ)
         {
             Assert.IsInstanceOf<Vector3>(Utilities.CastPointToVector(new Point3D()
             {

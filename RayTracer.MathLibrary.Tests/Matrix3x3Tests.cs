@@ -14,14 +14,14 @@ namespace RayTracer.MathLibrary.Tests
                   1f, 0f, 0f,
                   0f, 1f, 0f,
                   0f, 0f, 1f)]
-        public void Matrix3x3Constructor_WhenCalled_CreateMatrix(float expected00, float expected01, float expected02,
-                                                                 float expected10, float expected11, float expected12,
-                                                                 float expected20, float expected21, float expected22,
-                                                                 float arg00, float arg01, float arg02,
-                                                                 float arg10, float arg11, float arg12,
-                                                                 float arg20, float arg21, float arg22)
+        public void Matrix3x3Constructor_WhenCalled_CreateMatrix(double expected00, double expected01, double expected02,
+                                                                 double expected10, double expected11, double expected12,
+                                                                 double expected20, double expected21, double expected22,
+                                                                 double arg00, double arg01, double arg02,
+                                                                 double arg10, double arg11, double arg12,
+                                                                 double arg20, double arg21, double arg22)
         {
-            float[,] expected = new float[3, 3]
+            double[,] expected = new double[3, 3]
             {
                 { expected00, expected01, expected02 },
                 { expected10, expected11, expected12 },
@@ -45,17 +45,17 @@ namespace RayTracer.MathLibrary.Tests
                   1f, 2f, 3f,
                   4f, 5f, 6f,
                   7f, 8f, 9f)]
-        public void MatrixMultiplication_WhenCalledWith2Matrixes_PerformMatrixMultipliaction(float expected00, float expected01, float expected02,
-                                                                                             float expected10, float expected11, float expected12,
-                                                                                             float expected20, float expected21, float expected22,
-                                                                                             float argA00, float argA01, float argA02,
-                                                                                             float argA10, float argA11, float argA12,
-                                                                                             float argA20, float argA21, float argA22,
-                                                                                             float argB00, float argB01, float argB02,
-                                                                                             float argB10, float argB11, float argB12,
-                                                                                             float argB20, float argB21, float argB22)
+        public void MatrixMultiplication_WhenCalledWith2Matrixes_PerformMatrixMultipliaction(double expected00, double expected01, double expected02,
+                                                                                             double expected10, double expected11, double expected12,
+                                                                                             double expected20, double expected21, double expected22,
+                                                                                             double argA00, double argA01, double argA02,
+                                                                                             double argA10, double argA11, double argA12,
+                                                                                             double argA20, double argA21, double argA22,
+                                                                                             double argB00, double argB01, double argB02,
+                                                                                             double argB10, double argB11, double argB12,
+                                                                                             double argB20, double argB21, double argB22)
         {
-            float[,] expected = new float[3, 3]
+            double[,] expected = new double[3, 3]
             {
                 { expected00, expected01, expected02 },
                 { expected10, expected11, expected12 },
@@ -79,11 +79,11 @@ namespace RayTracer.MathLibrary.Tests
                   4f, 5f, 6f,
                   7f, 8f, 9f,
                   1f, 2f, 3f)]
-        public void MatrixMultiplication_WhenCalledWithMatrixAndVector_PerformMatrixMultipliaction(float expectedX, float expectedY, float expectedZ,
-                                                                                                   float argA00, float argA01, float argA02,
-                                                                                                   float argA10, float argA11, float argA12,
-                                                                                                   float argA20, float argA21, float argA22,
-                                                                                                   float argX, float argY, float argZ)
+        public void MatrixMultiplication_WhenCalledWithMatrixAndVector_PerformMatrixMultipliaction(double expectedX, double expectedY, double expectedZ,
+                                                                                                   double argA00, double argA01, double argA02,
+                                                                                                   double argA10, double argA11, double argA12,
+                                                                                                   double argA20, double argA21, double argA22,
+                                                                                                   double argX, double argY, double argZ)
         {
             Vector3 expected = new Vector3(expectedX, expectedY, expectedZ);
 
@@ -103,12 +103,12 @@ namespace RayTracer.MathLibrary.Tests
                   1f, 2f, 3f,
                   4f, 5f, 6f,
                   7f, 8f, 9f)]
-        public void MatrixCompare_WhenCalledWith2SameMatrixes_ReturnIfMatrixesAreSame(float argA00, float argA01, float argA02,
-                                                                                      float argA10, float argA11, float argA12,
-                                                                                      float argA20, float argA21, float argA22,
-                                                                                      float argB00, float argB01, float argB02,
-                                                                                      float argB10, float argB11, float argB12,
-                                                                                      float argB20, float argB21, float argB22)
+        public void MatrixCompare_WhenCalledWith2SameMatrixes_ReturnIfMatrixesAreSame(double argA00, double argA01, double argA02,
+                                                                                      double argA10, double argA11, double argA12,
+                                                                                      double argA20, double argA21, double argA22,
+                                                                                      double argB00, double argB01, double argB02,
+                                                                                      double argB10, double argB11, double argB12,
+                                                                                      double argB20, double argB21, double argB22)
         {
             Matrix3x3 matrixA = new Matrix3x3(argA00, argA01, argA02,
                                               argA10, argA11, argA12,
@@ -128,12 +128,12 @@ namespace RayTracer.MathLibrary.Tests
                   1f, 2f, 3f,
                   4f, 5f, 6f,
                   7f, 8f, 9f)]
-        public void MatrixCompare_WhenCalledWith2DifferentMatrixes_ReturnIfMatrixesAreDifferent(float argA00, float argA01, float argA02,
-                                                                                                float argA10, float argA11, float argA12,
-                                                                                                float argA20, float argA21, float argA22,
-                                                                                                float argB00, float argB01, float argB02,
-                                                                                                float argB10, float argB11, float argB12,
-                                                                                                float argB20, float argB21, float argB22)
+        public void MatrixCompare_WhenCalledWith2DifferentMatrixes_ReturnIfMatrixesAreDifferent(double argA00, double argA01, double argA02,
+                                                                                                double argA10, double argA11, double argA12,
+                                                                                                double argA20, double argA21, double argA22,
+                                                                                                double argB00, double argB01, double argB02,
+                                                                                                double argB10, double argB11, double argB12,
+                                                                                                double argB20, double argB21, double argB22)
         {
             Matrix3x3 matrixA = new Matrix3x3(argA00, argA01, argA02,
                                               argA10, argA11, argA12,
@@ -159,14 +159,14 @@ namespace RayTracer.MathLibrary.Tests
                   1f, 4f, 7f,
                   2f, 5f, 8f,
                   3f, 6f, 9f)]
-        public void Transpose_WhenCalled_TransposeMatrix(float expected00, float expected01, float expected02,
-                                                         float expected10, float expected11, float expected12,
-                                                         float expected20, float expected21, float expected22,
-                                                         float arg00, float arg01, float arg02,
-                                                         float arg10, float arg11, float arg12,
-                                                         float arg20, float arg21, float arg22)
+        public void Transpose_WhenCalled_TransposeMatrix(double expected00, double expected01, double expected02,
+                                                         double expected10, double expected11, double expected12,
+                                                         double expected20, double expected21, double expected22,
+                                                         double arg00, double arg01, double arg02,
+                                                         double arg10, double arg11, double arg12,
+                                                         double arg20, double arg21, double arg22)
         {
-            float[,] expected = new float[3, 3]
+            double[,] expected = new double[3, 3]
             {
                 { expected00, expected01, expected02 },
                 { expected10, expected11, expected12 },
@@ -190,9 +190,9 @@ namespace RayTracer.MathLibrary.Tests
         [TestCase(0f, 30f, 36f, 42f,
                       66f, 81f, 96f,
                       102f, 126f, 150f)]
-        public void Det_WhenCalled_CalculateDet(float expected, float arg00, float arg01, float arg02,
-                                                                float arg10, float arg11, float arg12,
-                                                                float arg20, float arg21, float arg22)
+        public void Det_WhenCalled_CalculateDet(double expected, double arg00, double arg01, double arg02,
+                                                                double arg10, double arg11, double arg12,
+                                                                double arg20, double arg21, double arg22)
         {
             Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
                                              arg10, arg11, arg12,
@@ -208,14 +208,14 @@ namespace RayTracer.MathLibrary.Tests
                   3f, -2f, 4f,
                   1f, 0f, 2f,
                   0f, 1f, 0f)]
-        public void Inverse_WhenCalled_InverseMatrix(float expected00, float expected01, float expected02,
-                                                     float expected10, float expected11, float expected12,
-                                                     float expected20, float expected21, float expected22,
-                                                     float arg00, float arg01, float arg02,
-                                                     float arg10, float arg11, float arg12,
-                                                     float arg20, float arg21, float arg22)
+        public void Inverse_WhenCalled_InverseMatrix(double expected00, double expected01, double expected02,
+                                                     double expected10, double expected11, double expected12,
+                                                     double expected20, double expected21, double expected22,
+                                                     double arg00, double arg01, double arg02,
+                                                     double arg10, double arg11, double arg12,
+                                                     double arg20, double arg21, double arg22)
         {
-            float[,] expected = new float[3, 3]
+            double[,] expected = new double[3, 3]
             {
                 { expected00, expected01, expected02 },
                 { expected10, expected11, expected12 },
@@ -233,24 +233,16 @@ namespace RayTracer.MathLibrary.Tests
         [TestCase(3f, -2f, 4f,
                   1f, 0f, 2f,
                   0f, 1f, 0f)]
-        public void Inverse_WhenCalledTwice_ReturnOriginalMatrix(float arg00, float arg01, float arg02,
-                                                                 float arg10, float arg11, float arg12,
-                                                                 float arg20, float arg21, float arg22)
+        [TestCase(1f, 2f, 3f,
+                  4f, 5f, 6f,
+                  7f, 8f, 10f)]
+        [TestCase(30f, 36f, 42f,
+                  66f, 81f, 96f,
+                  102f, 126f, 151f)]
+        public void Inverse_WhenCalledTwice_ReturnOriginalMatrix(double arg00, double arg01, double arg02,
+                                                                 double arg10, double arg11, double arg12,
+                                                                 double arg20, double arg21, double arg22)
         {
-            float[,] expected = new float[3, 3]
-            {
-                { arg00, arg01, arg02 },
-                { arg10, arg11, arg12 },
-                { arg20, arg21, arg22 }
-            };
-
-            Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
-                                             arg10, arg11, arg12,
-                                             arg20, arg21, arg22);
-
-            Assert.AreEqual(expected, Matrix3x3.Inverse(Matrix3x3.Inverse(matrix))._matrix);
-
-            /*
             Matrix3x3 expected = new Matrix3x3(arg00, arg01, arg02, 
                                                arg10, arg11, arg12,
                                                arg20, arg21, arg22);
@@ -260,7 +252,6 @@ namespace RayTracer.MathLibrary.Tests
                                              arg20, arg21, arg22);
 
             Assert.IsTrue(expected == Matrix3x3.Inverse(Matrix3x3.Inverse(matrix)));
-             * */
         }
     }
 }
