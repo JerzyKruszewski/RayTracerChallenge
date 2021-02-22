@@ -305,5 +305,24 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.AreEqual(expected, Matrix3x3.GetMinor(matrix, row, column));
         }
+
+        [Test]
+        [TestCase(-25,
+                  3f, 5f, 0f,
+                  2f, -1f, -7f,
+                  6f, -1f, 5f,
+                  1, 0)]
+        public void GetCofactor_WhenCalled_ReturnCofactor(double expected,
+                                                          double arg00, double arg01, double arg02,
+                                                          double arg10, double arg11, double arg12,
+                                                          double arg20, double arg21, double arg22,
+                                                          int row, int column)
+        {
+            Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
+                                             arg10, arg11, arg12,
+                                             arg20, arg21, arg22);
+
+            Assert.AreEqual(expected, Matrix3x3.GetCofactor(matrix, row, column));
+        }
     }
 }

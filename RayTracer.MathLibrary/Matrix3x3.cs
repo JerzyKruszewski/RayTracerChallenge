@@ -205,5 +205,15 @@ namespace RayTracer.MathLibrary
         {
             return GetSubmatrix(matrix, row, column).Det;
         }
+
+        public static double GetCofactor(Matrix3x3 matrix, int row, int column)
+        {
+            if ((row + column) % 2 == 1)
+            {
+                return -GetMinor(matrix, row, column);
+            }
+
+            return GetMinor(matrix, row, column);
+        }
     }
 }
