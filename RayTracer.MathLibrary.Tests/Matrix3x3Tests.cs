@@ -191,8 +191,8 @@ namespace RayTracer.MathLibrary.Tests
                       66f, 81f, 96f,
                       102f, 126f, 150f)]
         public void Det_WhenCalled_CalculateDet(double expected, double arg00, double arg01, double arg02,
-                                                                double arg10, double arg11, double arg12,
-                                                                double arg20, double arg21, double arg22)
+                                                                 double arg10, double arg11, double arg12,
+                                                                 double arg20, double arg21, double arg22)
         {
             Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
                                              arg10, arg11, arg12,
@@ -252,6 +252,58 @@ namespace RayTracer.MathLibrary.Tests
                                              arg20, arg21, arg22);
 
             Assert.IsTrue(expected == Matrix3x3.Inverse(Matrix3x3.Inverse(matrix)));
+        }
+
+        [Test]
+        [TestCase(-3f, 2f,
+                  0f, 6f,
+                  1f, 5f, 0f,
+                  -3f, 2f, 7f,
+                  0f, 6f, -3f,
+                  0, 2)]
+        [TestCase(-3f, 2f,
+                  0f, 6f,
+                  1f, -3f, 2f,
+                  -3f, -3f, 2f,
+                  0f, 0f, 6f,
+                  0, 0)]
+        public void GetSubmatrix_WhenCalled_RemoveRowAndColumn(double expected00, double expected01,
+                                                               double expected10, double expected11,
+                                                               double arg00, double arg01, double arg02,
+                                                               double arg10, double arg11, double arg12,
+                                                               double arg20, double arg21, double arg22,
+                                                               int row, int column)
+        {
+            double[,] expected = new double[2, 2]
+            {
+                { expected00, expected01 },
+                { expected10, expected11 }
+            };
+
+            Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
+                                             arg10, arg11, arg12,
+                                             arg20, arg21, arg22);
+
+            Assert.AreEqual(expected, Matrix3x3.GetSubmatrix(matrix, row, column)._matrix);
+        }
+
+        [Test]
+        [TestCase(25,
+                  3f, 5f, 0f,
+                  2f, -1f, -7f,
+                  6f, -1f, 5f,
+                  1, 0)]
+        public void GetMinor_WhenCalled_ReturnMinor(double expected,
+                                                    double arg00, double arg01, double arg02,
+                                                    double arg10, double arg11, double arg12,
+                                                    double arg20, double arg21, double arg22,
+                                                    int row, int column)
+        {
+            Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
+                                             arg10, arg11, arg12,
+                                             arg20, arg21, arg22);
+
+            Assert.AreEqual(expected, Matrix3x3.GetMinor(matrix, row, column));
         }
     }
 }

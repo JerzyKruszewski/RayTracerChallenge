@@ -163,5 +163,47 @@ namespace RayTracer.MathLibrary
 
             return result;
         }
+
+        public static Matrix2x2 GetSubmatrix(Matrix3x3 matrix, int row, int column)
+        {
+            bool removedRow = false;
+            bool removedColumn = false;
+            Matrix2x2 result = new Matrix2x2();
+            int insertRow;
+            int insertColumn;
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (i == row)
+                {
+                    removedRow = true;
+                    continue;
+                }
+
+                insertRow = removedRow ? i - 1 : i;
+
+                for (int j = 0; j < 3; j++)
+                {
+                    if (j == column)
+                    {
+                        removedColumn = true;
+                        continue;
+                    }
+
+                    insertColumn = removedColumn ? j - 1 : j;
+
+                    result._matrix[insertRow, insertColumn] = matrix._matrix[i, j];
+                }
+
+                removedColumn = false;
+            }
+
+            return result;
+        }
+
+        public static double GetMinor(Matrix3x3 matrix, int row, int column)
+        {
+            return GetSubmatrix(matrix, row, column).Det;
+        }
     }
 }
