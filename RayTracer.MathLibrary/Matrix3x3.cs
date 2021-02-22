@@ -6,25 +6,25 @@ namespace RayTracer.MathLibrary
 {
     public class Matrix3x3
     {
-        public static readonly float[,] IdentityMatrix = new float[3, 3]
+        public static readonly double[,] IdentityMatrix = new double[3, 3]
         {
             { 1f, 0f, 0f },
             { 0f, 1f, 0f },
             { 0f, 0f, 1f }
         };
 
-        public readonly float[,] _matrix;
+        public readonly double[,] _matrix;
 
         public Matrix3x3()
         {
-            _matrix = new float[3, 3];
+            _matrix = new double[3, 3];
         }
 
-        public Matrix3x3(float arg00, float arg01, float arg02,
-                         float arg10, float arg11, float arg12,
-                         float arg20, float arg21, float arg22)
+        public Matrix3x3(double arg00, double arg01, double arg02,
+                         double arg10, double arg11, double arg12,
+                         double arg20, double arg21, double arg22)
         {
-            _matrix = new float[3, 3]
+            _matrix = new double[3, 3]
             {
                 { arg00, arg01, arg02 },
                 { arg10, arg11, arg12 },
@@ -32,7 +32,7 @@ namespace RayTracer.MathLibrary
             };
         }
 
-        public float Det
+        public double Det
         {
             get
             {
@@ -132,7 +132,7 @@ namespace RayTracer.MathLibrary
 
         public static Matrix3x3 Inverse(Matrix3x3 matrix)
         {
-            float det = matrix.Det;
+            double det = matrix.Det;
 
             if (det == 0.0)
             {
@@ -141,15 +141,15 @@ namespace RayTracer.MathLibrary
 
             Matrix3x3 result = new Matrix3x3();
 
-            float a = matrix._matrix[0, 0];
-            float b = matrix._matrix[0, 1];
-            float c = matrix._matrix[0, 2];
-            float d = matrix._matrix[1, 0];
-            float e = matrix._matrix[1, 1];
-            float f = matrix._matrix[1, 2];
-            float g = matrix._matrix[2, 0];
-            float h = matrix._matrix[2, 1];
-            float i = matrix._matrix[2, 2];
+            double a = matrix._matrix[0, 0];
+            double b = matrix._matrix[0, 1];
+            double c = matrix._matrix[0, 2];
+            double d = matrix._matrix[1, 0];
+            double e = matrix._matrix[1, 1];
+            double f = matrix._matrix[1, 2];
+            double g = matrix._matrix[2, 0];
+            double h = matrix._matrix[2, 1];
+            double i = matrix._matrix[2, 2];
 
             result._matrix[0, 0] = (e * i - f * h) / det;
             result._matrix[0, 1] = -(b * i - c * h) / det;

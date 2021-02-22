@@ -6,7 +6,7 @@ namespace RayTracer.MathLibrary
 {
     public class MathHelper
     {
-        public static IObjectIn3DSpace CreateObjectIn3DSpace(Tuple<float, float, float, float> tuple)
+        public static IObjectIn3DSpace CreateObjectIn3DSpace(Tuple<double, double, double, double> tuple)
         {
             if (tuple.Item4 == 1.0)
             {
@@ -30,7 +30,7 @@ namespace RayTracer.MathLibrary
             return null;
         }
 
-        public static bool AreNumbersEqual(float firstNumber, float secondNumber, float epsilon = 0.00001f)
+        public static bool AreNumbersEqual(double firstNumber, double secondNumber, double epsilon = 0.00001f)
         {
             return Math.Abs(firstNumber - secondNumber) < epsilon;
         }

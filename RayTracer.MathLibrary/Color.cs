@@ -6,18 +6,18 @@ namespace RayTracer.MathLibrary
 {
     public class Color : IColor
     {
-        public float Red { get; set; }
+        public double Red { get; set; }
 
-        public float Green { get; set; }
+        public double Green { get; set; }
 
-        public float Blue { get; set; }
+        public double Blue { get; set; }
 
         public Color()
         {
 
         }
 
-        public Color(float red, float green, float blue)
+        public Color(double red, double green, double blue)
         {
             Red = red;
             Green = green;
@@ -39,19 +39,19 @@ namespace RayTracer.MathLibrary
             return new Color(color1.Red * color2.Red, color1.Green * color2.Green, color1.Blue * color2.Blue);
         }
 
-        public static Color operator *(Color color, float scalar)
+        public static Color operator *(Color color, double scalar)
         {
             return new Color(color.Red * scalar, color.Green * scalar, color.Blue * scalar);
         }
 
-        public static bool AreColorsEqual(Color color1, Color color2, float epsilon = 0.00001f)
+        public static bool AreColorsEqual(Color color1, Color color2, double epsilon = 0.00001f)
         {
             return MathHelper.AreNumbersEqual(color1.Red, color2.Red, epsilon)
                 && MathHelper.AreNumbersEqual(color1.Green, color2.Green, epsilon)
                 && MathHelper.AreNumbersEqual(color1.Blue, color2.Blue, epsilon);
         }
 
-        public static int ConvertColorValueToByte(float color)
+        public static int ConvertColorValueToByte(double color)
         {
             color *= 255;
 

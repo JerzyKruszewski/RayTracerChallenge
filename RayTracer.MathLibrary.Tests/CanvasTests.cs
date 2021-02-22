@@ -46,7 +46,7 @@ namespace RayTracer.MathLibrary.Tests
 
         [Test]
         [TestCase(0, 0, 1f, 0f, 0f)]
-        public void WritePixel_WhenCalled_ChangeColorOfOnePixel(int x, int y, float red, float green, float blue)
+        public void WritePixel_WhenCalled_ChangeColorOfOnePixel(int x, int y, double red, double green, double blue)
         {
             Color color = new Color(red, green, blue);
             Canvas canvas = new Canvas(10, 10);
@@ -59,7 +59,7 @@ namespace RayTracer.MathLibrary.Tests
 
         [Test]
         [TestCase(0f, 0f, 0f, 0, 0)]
-        public void PixelAt_WhenCalled_ReturnColorOfPixel(float red, float green, float blue, int x, int y)
+        public void PixelAt_WhenCalled_ReturnColorOfPixel(double red, double green, double blue, int x, int y)
         {
             Color expected = new Color(red, green, blue);
             Canvas canvas = new Canvas(10, 10);

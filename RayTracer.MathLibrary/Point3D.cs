@@ -6,18 +6,18 @@ namespace RayTracer.MathLibrary
 {
     public class Point3D : IObjectIn3DSpace
     {
-        public float X { get; set; }
+        public double X { get; set; }
 
-        public float Y { get; set; }
+        public double Y { get; set; }
 
-        public float Z { get; set; }
+        public double Z { get; set; }
 
         public Point3D()
         {
 
         }
 
-        public Point3D(float x, float y, float z)
+        public Point3D(double x, double y, double z)
         {
             X = x;
             Y = y;
@@ -44,12 +44,12 @@ namespace RayTracer.MathLibrary
             return new Vector3(origin.X - point.X, origin.Y - point.Y, origin.Z - point.Z);
         }
 
-        public static Point3D operator *(Point3D origin, float scalar)
+        public static Point3D operator *(Point3D origin, double scalar)
         {
             return new Point3D(origin.X * scalar, origin.Y * scalar, origin.Z * scalar);
         }
 
-        public static Point3D operator /(Point3D origin, float scalar)
+        public static Point3D operator /(Point3D origin, double scalar)
         {
             return new Point3D(origin.X / scalar, origin.Y / scalar, origin.Z / scalar);
         }
