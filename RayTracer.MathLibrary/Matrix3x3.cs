@@ -129,5 +129,39 @@ namespace RayTracer.MathLibrary
 
             return result;
         }
+
+        public static Matrix3x3 Inverse(Matrix3x3 matrix)
+        {
+            float det = matrix.Det;
+
+            if (det == 0.0)
+            {
+                throw new DivideByZeroException("det(matrix_to_inverse) cannot be equal 0");
+            }
+
+            Matrix3x3 result = new Matrix3x3();
+
+            float a = matrix._matrix[0, 0];
+            float b = matrix._matrix[0, 1];
+            float c = matrix._matrix[0, 2];
+            float d = matrix._matrix[1, 0];
+            float e = matrix._matrix[1, 1];
+            float f = matrix._matrix[1, 2];
+            float g = matrix._matrix[2, 0];
+            float h = matrix._matrix[2, 1];
+            float i = matrix._matrix[2, 2];
+
+            result._matrix[0, 0] = (e * i - f * h) / det;
+            result._matrix[0, 1] = -(b * i - c * h) / det;
+            result._matrix[0, 2] = (b * f - c * e) / det;
+            result._matrix[1, 0] = -(d * i - f * g) / det;
+            result._matrix[1, 1] = (a * i - c * g) / det;
+            result._matrix[1, 2] = -(a * f - c * d) / det;
+            result._matrix[2, 0] = (d * h - e * g) / det;
+            result._matrix[2, 1] = -(a * h - b * g) / det;
+            result._matrix[2, 2] = (a * e - b * d) / det;
+
+            return result;
+        }
     }
 }

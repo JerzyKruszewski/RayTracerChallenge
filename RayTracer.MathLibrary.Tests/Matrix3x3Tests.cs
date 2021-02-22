@@ -88,8 +88,8 @@ namespace RayTracer.MathLibrary.Tests
             Vector3 expected = new Vector3(expectedX, expectedY, expectedZ);
 
             Matrix3x3 matrix = new Matrix3x3(argA00, argA01, argA02,
-                                              argA10, argA11, argA12,
-                                              argA20, argA21, argA22);
+                                             argA10, argA11, argA12,
+                                             argA20, argA21, argA22);
 
             Vector3 vector = new Vector3(argX, argY, argZ);
 
@@ -184,6 +184,12 @@ namespace RayTracer.MathLibrary.Tests
         [TestCase(5f, 1f, 0f, 0f,
                       0f, 5f, 0f,
                       0f, 0f, 1f)]
+        [TestCase(0f, 1f, 2f, 3f,
+                      4f, 5f, 6f,
+                      7f, 8f, 9f)]
+        [TestCase(0f, 30f, 36f, 42f,
+                      66f, 81f, 96f,
+                      102f, 126f, 150f)]
         public void Det_WhenCalled_CalculateDet(float expected, float arg00, float arg01, float arg02,
                                                                 float arg10, float arg11, float arg12,
                                                                 float arg20, float arg21, float arg22)
@@ -193,6 +199,68 @@ namespace RayTracer.MathLibrary.Tests
                                              arg20, arg21, arg22);
 
             Assert.AreEqual(expected, matrix.Det);
+        }
+
+        [Test]
+        [TestCase(1f, -2f, 2f,
+                  0f, 0f, 1f,
+                  -0.5f, 1.5f, -1f,
+                  3f, -2f, 4f,
+                  1f, 0f, 2f,
+                  0f, 1f, 0f)]
+        public void Inverse_WhenCalled_InverseMatrix(float expected00, float expected01, float expected02,
+                                                     float expected10, float expected11, float expected12,
+                                                     float expected20, float expected21, float expected22,
+                                                     float arg00, float arg01, float arg02,
+                                                     float arg10, float arg11, float arg12,
+                                                     float arg20, float arg21, float arg22)
+        {
+            float[,] expected = new float[3, 3]
+            {
+                { expected00, expected01, expected02 },
+                { expected10, expected11, expected12 },
+                { expected20, expected21, expected22 }
+            };
+
+            Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
+                                             arg10, arg11, arg12,
+                                             arg20, arg21, arg22);
+
+            Assert.AreEqual(expected, Matrix3x3.Inverse(matrix)._matrix);
+        }
+
+        [Test]
+        [TestCase(3f, -2f, 4f,
+                  1f, 0f, 2f,
+                  0f, 1f, 0f)]
+        public void Inverse_WhenCalledTwice_ReturnOriginalMatrix(float arg00, float arg01, float arg02,
+                                                                 float arg10, float arg11, float arg12,
+                                                                 float arg20, float arg21, float arg22)
+        {
+            float[,] expected = new float[3, 3]
+            {
+                { arg00, arg01, arg02 },
+                { arg10, arg11, arg12 },
+                { arg20, arg21, arg22 }
+            };
+
+            Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
+                                             arg10, arg11, arg12,
+                                             arg20, arg21, arg22);
+
+            Assert.AreEqual(expected, Matrix3x3.Inverse(Matrix3x3.Inverse(matrix))._matrix);
+
+            /*
+            Matrix3x3 expected = new Matrix3x3(arg00, arg01, arg02, 
+                                               arg10, arg11, arg12,
+                                               arg20, arg21, arg22);
+
+            Matrix3x3 matrix = new Matrix3x3(arg00, arg01, arg02,
+                                             arg10, arg11, arg12,
+                                             arg20, arg21, arg22);
+
+            Assert.IsTrue(expected == Matrix3x3.Inverse(Matrix3x3.Inverse(matrix)));
+             * */
         }
     }
 }
