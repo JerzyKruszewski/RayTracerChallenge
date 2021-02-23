@@ -21,7 +21,7 @@ namespace RayTracer.MathLibrary
                 X = point.X,
                 Y = point.Y,
                 Z = point.Z,
-                W = 0
+                W = point.W
             };
         }
     }

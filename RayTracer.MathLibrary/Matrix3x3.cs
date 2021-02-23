@@ -45,7 +45,6 @@ namespace RayTracer.MathLibrary
             }
         }
 
-        //Test
         public static Matrix3x3 operator *(Matrix3x3 matrixA, Matrix3x3 matrixB)
         {
             Matrix3x3 result = new Matrix3x3();
@@ -63,7 +62,6 @@ namespace RayTracer.MathLibrary
             return result;
         }
 
-        //Test
         public static Vector3 operator *(Matrix3x3 matrixA, Vector3 vector)
         {
             Vector3 result = new Vector3();
