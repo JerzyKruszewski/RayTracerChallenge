@@ -32,7 +32,8 @@ namespace RayTracer.MathLibrary.Tests
             {
                 X = expectedX,
                 Y = expectedY,
-                Z = expectedZ
+                Z = expectedZ,
+                W = 2
             };
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, point1 + point2));
@@ -143,14 +144,16 @@ namespace RayTracer.MathLibrary.Tests
             {
                 X = expectedX,
                 Y = expectedY,
-                Z = expectedZ
+                Z = expectedZ,
+                W = 1 * scalar
             };
 
             Point3D point = new Point3D()
             {
                 X = argX,
                 Y = argY,
-                Z = argZ
+                Z = argZ,
+                W = 1
             };
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, point * scalar));
@@ -167,17 +170,43 @@ namespace RayTracer.MathLibrary.Tests
             {
                 X = expectedX,
                 Y = expectedY,
-                Z = expectedZ
+                Z = expectedZ,
+                W = 1 / scalar
             };
 
             Point3D point = new Point3D()
             {
                 X = argX,
                 Y = argY,
-                Z = argZ
+                Z = argZ,
+                W = 1
             };
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, point / scalar));
+        }
+
+        [Test]
+        [TestCase(1f, -1f, 1f, 2f, -1f, 1f, -1f, -2f)]
+        public void NegatePoint_WhenCalled_ReturnPointWithOppositeCordinates(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                             double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D()
+            {
+                X = expectedX,
+                Y = expectedY,
+                Z = expectedZ,
+                W = expectedW
+            };
+
+            Point3D point = new Point3D()
+            {
+                X = argX,
+                Y = argY,
+                Z = argZ,
+                W = argW
+            };
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, Point3D.NegatePoint(point)));
         }
     }
 }

@@ -11,5 +11,7 @@ namespace RayTracer.MathLibrary
         public double Y { get; set; }
 
         public double Z { get; set; }
+
+        public double W { get; set; }
     }
 }

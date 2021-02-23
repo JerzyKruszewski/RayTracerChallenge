@@ -12,6 +12,8 @@ namespace RayTracer.MathLibrary
 
         public double Z { get; set; }
 
+        public double W { get; set; } = 0;
+
         public double Magnitude
         {
             get
@@ -30,6 +32,14 @@ namespace RayTracer.MathLibrary
             X = x;
             Y = y;
             Z = z;
+        }
+
+        public Vector3(double x, double y, double z, double w)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+            W = w;
         }
 
         public static Vector3 operator +(Vector3 origin, Vector3 vector)
