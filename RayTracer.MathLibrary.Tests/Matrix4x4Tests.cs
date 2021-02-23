@@ -245,6 +245,22 @@ namespace RayTracer.MathLibrary.Tests
                   1f, -5f, 1f, 8f,
                   7f, 7f, -6f, -7f,
                   1f, -3f, 7f, 4f)]
+        [TestCase(-0.15385, -0.15385, -0.28205, -0.53846,
+                  -0.07692, 0.12308, 0.02564, 0.03077,
+                  0.35897, 0.35897, 0.4359, 0.92308,
+                  -0.69231, -0.69231, -0.76923, -1.92308,
+                  8f, -5f, 9f, 2f,
+                  7f, 5f, 6f, 1f,
+                  -6f, 0f, 9f, 6f,
+                  -3f, 0f, -9f, -4f)]
+        [TestCase(-0.04074, -0.07778, 0.14444, -0.22222,
+                  -0.07778, 0.03333, 0.36667, -0.33333,
+                  -0.02901, -0.14630, -0.10926, 0.12963,
+                  0.17778, 0.06667, -0.26667, 0.33333,
+                  9f, 3f, 0f, 9f,
+                  -5f, -2f, -6f, -3f,
+                  -4f, 9f, 6f, 4f,
+                  -7f, 6f, 6f, 2f)]
         public void Inverse_WhenCalled_InverseMatrix(double expected00, double expected01, double expected02, double expected03,
                                                      double expected10, double expected11, double expected12, double expected13,
                                                      double expected20, double expected21, double expected22, double expected23,
