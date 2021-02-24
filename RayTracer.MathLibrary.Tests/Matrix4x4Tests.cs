@@ -382,5 +382,112 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.AreEqual(expected, Matrix4x4.GetCofactor(matrix, row, column));
         }
+
+        [Test]
+        [TestCase(2f, 1f, 7f, 1f,
+                  5f, -3f, 2f,
+                  -3f, 4f, 5f, 1f)]
+        public void TranslationMatrix_WhenMultipliedWithPoint_ReturnTranslatedPoint(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                                    double x, double y, double z,
+                                                                                    double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.TranslationMatrix(x, y, z);
+
+            Point3D point = new Point3D(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
+
+        [Test]
+        [TestCase(-8f, 7f, 3f, 1f,
+                  5f, -3f, 2f,
+                  -3f, 4f, 5f, 1f)]
+        public void TranslationMatrix_WhenMultipliedInverseWithPoint_ReturnTranslatedPoint(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                                           double x, double y, double z,
+                                                                                           double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.Inverse(Matrix4x4.TranslationMatrix(x, y, z));
+
+            Point3D point = new Point3D(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
+
+        [Test]
+        [TestCase(5f, -3f, 2f,
+                  -3f, 4f, 5f, 0f)]
+        [TestCase(-5f, -3f, 2.5f,
+                  -3f, 4f, 5f, 0f)]
+        [TestCase(5f, -3f, 2f,
+                  -3.734f, 4f, -5f, 0f)]
+        [TestCase(0f, -3f, 2f,
+                  -3f, 1231f, 5f, 0f)]
+        public void TranslationMatrix_WhenMultipliedWithVector_ReturnUnchangedVector(double x, double y, double z,
+                                                                                     double argX, double argY, double argZ, double argW)
+        {
+            Matrix4x4 matrix = Matrix4x4.TranslationMatrix(x, y, z);
+
+            Vector3 vector = new Vector3(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(vector, (matrix * vector)));
+        }
+
+        [Test]
+        [TestCase(-8f, 18f, 32f, 1f,
+                  2f, 3f, 4f,
+                  -4f, 6f, 8f, 1f)]
+        [TestCase(-2f, 3f, 4f, 1f,
+                  -1f, 1f, 1f,
+                  2f, 3f, 4f, 1f)]
+        public void ScalingMatrix_WhenMultipliedWithPoint_ReturnPointWithScaledCordinates(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                                          double x, double y, double z,
+                                                                                          double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.ScalingMatrix(x, y, z);
+
+            Point3D point = new Point3D(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
+
+        [Test]
+        [TestCase(-8f, 18f, 32f, 0f,
+                  2f, 3f, 4f,
+                  -4f, 6f, 8f, 0f)]
+        public void ScalingMatrix_WhenMultipliedWithVector_ReturnVectorWithScaledCordinates(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                                            double x, double y, double z,
+                                                                                            double argX, double argY, double argZ, double argW)
+        {
+            Vector3 expected = new Vector3(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.ScalingMatrix(x, y, z);
+
+            Vector3 vector = new Vector3(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * vector)));
+        }
+
+        [Test]
+        [TestCase(-2f, 2f, 2f, 0f,
+                  2f, 3f, 4f,
+                  -4f, 6f, 8f, 0f)]
+        public void ScalingMatrix_WhenMultipliedInverseWithVector_ReturnVectorWithScaledCordinates(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                                                   double x, double y, double z,
+                                                                                                   double argX, double argY, double argZ, double argW)
+        {
+            Vector3 expected = new Vector3(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.Inverse(Matrix4x4.ScalingMatrix(x, y, z));
+
+            Vector3 vector = new Vector3(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * vector)));
+        }
     }
 }

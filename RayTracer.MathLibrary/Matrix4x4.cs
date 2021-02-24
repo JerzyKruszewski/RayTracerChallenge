@@ -91,6 +91,34 @@ namespace RayTracer.MathLibrary
             return result;
         }
 
+        public static Point3D operator *(Matrix4x4 matrixA, Point3D point)
+        {
+            Point3D result = new Point3D();
+
+            result.X = matrixA._matrix[0, 0] * point.X +
+                       matrixA._matrix[0, 1] * point.Y +
+                       matrixA._matrix[0, 2] * point.Z +
+                       matrixA._matrix[0, 3] * point.W;
+
+            result.Y = matrixA._matrix[1, 0] * point.X +
+                       matrixA._matrix[1, 1] * point.Y +
+                       matrixA._matrix[1, 2] * point.Z +
+                       matrixA._matrix[1, 3] * point.W;
+
+            result.Z = matrixA._matrix[2, 0] * point.X +
+                       matrixA._matrix[2, 1] * point.Y +
+                       matrixA._matrix[2, 2] * point.Z +
+                       matrixA._matrix[2, 3] * point.W;
+
+            result.W = matrixA._matrix[3, 0] * point.X +
+                       matrixA._matrix[3, 1] * point.Y +
+                       matrixA._matrix[3, 2] * point.Z +
+                       matrixA._matrix[3, 3] * point.W;
+
+            return result;
+        }
+
+
         public static bool operator ==(Matrix4x4 matrixA, Matrix4x4 matrixB)
         {
             for (int i = 0; i < 4; i++)
@@ -210,6 +238,22 @@ namespace RayTracer.MathLibrary
             }
 
             return GetMinor(matrix, row, column);
+        }
+
+        public static Matrix4x4 TranslationMatrix(double x, double y, double z)
+        {
+            return new Matrix4x4(1, 0, 0, x,
+                                 0, 1, 0, y,
+                                 0, 0, 1, z,
+                                 0, 0, 0, 1);
+        }
+
+        public static Matrix4x4 ScalingMatrix(double x, double y, double z)
+        {
+            return new Matrix4x4(x, 0, 0, 0,
+                                 0, y, 0, 0,
+                                 0, 0, z, 0,
+                                 0, 0, 0, 1);
         }
     }
 }
