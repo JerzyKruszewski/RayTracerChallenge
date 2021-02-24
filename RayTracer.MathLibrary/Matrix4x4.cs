@@ -255,5 +255,29 @@ namespace RayTracer.MathLibrary
                                  0, 0, z, 0,
                                  0, 0, 0, 1);
         }
+
+        public static Matrix4x4 RotationXMatrix(double r)
+        {
+            return new Matrix4x4(1, 0, 0, 0,
+                                 0, Math.Cos(r), -Math.Sin(r), 0,
+                                 0, Math.Sin(r), Math.Cos(r), 0,
+                                 0, 0, 0, 1);
+        }
+
+        public static Matrix4x4 RotationYMatrix(double r)
+        {
+            return new Matrix4x4(Math.Cos(r), 0, Math.Sin(r), 0,
+                                 0, 1, 0, 0,
+                                 -Math.Sin(r), 0, Math.Cos(r), 0,
+                                 0, 0, 0, 1);
+        }
+
+        public static Matrix4x4 RotationZMatrix(double r)
+        {
+            return new Matrix4x4(Math.Cos(r), -Math.Sin(r), 0, 0,
+                                 Math.Sin(r), Math.Cos(r), 0, 0,
+                                 0, 0, 1, 0,
+                                 0, 0, 0, 1);
+        }
     }
 }

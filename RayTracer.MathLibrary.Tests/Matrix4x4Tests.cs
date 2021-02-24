@@ -489,5 +489,65 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * vector)));
         }
+
+        [Test]
+        [TestCase(0f, 0f, 1f, 1f,
+                  1.57079632679,
+                  0f, 1f, 0f, 1f)]
+        [TestCase(0f, 0.70710678118, 0.70710678118, 1f,
+                  0.78539816339,
+                  0f, 1f, 0f, 1f)]
+        public void RotationXMatrix_WhenMultipliedWithPoint_ReturnRotatedPoint(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                               double r,
+                                                                               double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.RotationXMatrix(r);
+
+            Point3D point = new Point3D(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
+
+        [Test]
+        [TestCase(1f, 0f, 0f, 1f,
+                  1.57079632679,
+                  0f, 0f, 1f, 1f)]
+        [TestCase(0.70710678118, 0f, 0.70710678118, 1f,
+                  0.78539816339,
+                  0f, 0f, 1f, 1f)]
+        public void RotationYMatrix_WhenMultipliedWithPoint_ReturnRotatedPoint(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                               double r,
+                                                                               double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.RotationYMatrix(r);
+
+            Point3D point = new Point3D(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
+
+        [Test]
+        [TestCase(-1f, 0f, 0f, 1f,
+                  1.57079632679,
+                  0f, 1f, 0f, 1f)]
+        [TestCase(-0.70710678118, 0.70710678118, 0f, 1f,
+                  0.78539816339,
+                  0f, 1f, 0f, 1f)]
+        public void RotationZMatrix_WhenMultipliedWithPoint_ReturnRotatedPoint(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                               double r,
+                                                                               double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.RotationZMatrix(r);
+
+            Point3D point = new Point3D(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
     }
 }
