@@ -6,13 +6,10 @@ namespace RayTracer.MathLibrary
 {
     public class Matrix4x4
     {
-        public static readonly double[,] IdentityMatrix = new double[4, 4]
-        {
-            { 1f, 0f, 0f, 0f },
-            { 0f, 1f, 0f, 0f },
-            { 0f, 0f, 1f, 0f },
-            { 0f, 0f, 0f, 1f }
-        };
+        public static readonly Matrix4x4 IdentityMatrix = new Matrix4x4(1f, 0f, 0f, 0f, 
+                                                                        0f, 1f, 0f, 0f,
+                                                                        0f, 0f, 1f, 0f,
+                                                                        0f, 0f, 0f, 1f);
 
         public readonly double[,] _matrix;
 
@@ -278,6 +275,45 @@ namespace RayTracer.MathLibrary
                                  Math.Sin(r), Math.Cos(r), 0, 0,
                                  0, 0, 1, 0,
                                  0, 0, 0, 1);
+        }
+
+        public static Matrix4x4 ShearingMatrix(double xy, double xz, double yx, double yz, double zx, double zy)
+        {
+            return new Matrix4x4(1, xy, xz, 0,
+                                 yx, 1, yz, 0,
+                                 zx, zy, 1, 0,
+                                 0, 0, 0, 1);
+        }
+
+        //Fluent API
+        public Matrix4x4 Translate(double x, double y, double z)
+        {
+            return TranslationMatrix(x, y, z) * this;
+        }
+
+        public Matrix4x4 Scale(double x, double y, double z)
+        {
+            return ScalingMatrix(x, y, z) * this;
+        }
+
+        public Matrix4x4 RotateX(double angle)
+        {
+            return RotationXMatrix(angle) * this;
+        }
+
+        public Matrix4x4 RotateY(double angle)
+        {
+            return RotationYMatrix(angle) * this;
+        }
+
+        public Matrix4x4 RotateZ(double angle)
+        {
+            return RotationZMatrix(angle) * this;
+        }
+
+        public Matrix4x4 Shearing(double xy, double xz, double yx, double yz, double zx, double zy)
+        {
+            return ShearingMatrix(xy, xz, yx, yz, zx, zy) * this;
         }
     }
 }

@@ -549,5 +549,48 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
         }
+
+        [Test]
+        [TestCase(5f, 3f, 4f, 1f,
+                  1f, 0f, 0f, 0f, 0f, 0f,
+                  2f, 3f, 4f, 1f)]
+        [TestCase(6f, 3f, 4f, 1f,
+                  0f, 1f, 0f, 0f, 0f, 0f,
+                  2f, 3f, 4f, 1f)]
+        [TestCase(2f, 5f, 4f, 1f,
+                  0f, 0f, 1f, 0f, 0f, 0f,
+                  2f, 3f, 4f, 1f)]
+        [TestCase(2f, 7f, 4f, 1f,
+                  0f, 0f, 0f, 1f, 0f, 0f,
+                  2f, 3f, 4f, 1f)]
+        [TestCase(2f, 3f, 6f, 1f,
+                  0f, 0f, 0f, 0f, 1f, 0f,
+                  2f, 3f, 4f, 1f)]
+        [TestCase(2f, 3f, 7f, 1f,
+                  0f, 0f, 0f, 0f, 0f, 1f,
+                  2f, 3f, 4f, 1f)]
+        public void ScalingMatrix_WhenMultipliedWithPoint_ReturnPointWithScaledCordinates(double expectedX, double expectedY, double expectedZ, double expectedW,
+                                                                                          double xy, double xz, double yx, double yz, double zx, double zy,
+                                                                                          double argX, double argY, double argZ, double argW)
+        {
+            Point3D expected = new Point3D(expectedX, expectedY, expectedZ, expectedW);
+
+            Matrix4x4 matrix = Matrix4x4.ShearingMatrix(xy, xz, yx, yz, zx, zy);
+
+            Point3D point = new Point3D(argX, argY, argZ, argW);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
+
+        [Test]
+        public void FluentAPITransformationChaining_WhenCalled_TransformPoint()
+        {
+            Point3D expected = new Point3D(15, 0, 7, 1);
+            Point3D point = new Point3D(1, 0, 1, 1);
+
+            Matrix4x4 matrix = Matrix4x4.IdentityMatrix.RotateX(Math.PI / 2).Scale(5, 5, 5).Translate(10, 5, 7);
+
+            Assert.IsTrue(Utilities.AreObjectEquals(expected, (matrix * point)));
+        }
     }
 }

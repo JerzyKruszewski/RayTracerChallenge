@@ -6,12 +6,9 @@ namespace RayTracer.MathLibrary
 {
     public class Matrix3x3
     {
-        public static readonly double[,] IdentityMatrix = new double[3, 3]
-        {
-            { 1f, 0f, 0f },
-            { 0f, 1f, 0f },
-            { 0f, 0f, 1f }
-        };
+        public static readonly Matrix3x3 IdentityMatrix = new Matrix3x3(1f, 0f, 0f,
+                                                                        0f, 1f, 0f,
+                                                                        0f, 0f, 1f);
 
         public readonly double[,] _matrix;
 

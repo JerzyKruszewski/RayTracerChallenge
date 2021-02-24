@@ -6,11 +6,8 @@ namespace RayTracer.MathLibrary
 {
     public class Matrix2x2
     {
-        public static readonly double[,] IdentityMatrix = new double[2, 2]
-        {
-            { 1f, 0f },
-            { 0f, 1f }
-        };
+        public static readonly Matrix2x2 IdentityMatrix = new Matrix2x2(1f, 0f,
+                                                                        0f, 1f);
 
         public readonly double[,] _matrix;
 
