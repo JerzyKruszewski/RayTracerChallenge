@@ -23,7 +23,9 @@ namespace ClockTestProject
                 matrix = Matrix4x4.IdentityMatrix.Translate(canvas.Width / 2, canvas.Height / 2, 0);
                 screenSpaceLocation = matrix * currentLocation;
 
-                canvas.WritePixel((int)screenSpaceLocation.X, canvas.Height - (int)screenSpaceLocation.Y, new Color(255, 255, 255));
+                canvas.WritePixel(Utilities.CastDoubleToInt(screenSpaceLocation.X),
+                                  canvas.Height - Utilities.CastDoubleToInt(screenSpaceLocation.Y),
+                                  new Color(255, 255, 255));
             }
 
             PPMFileStorage.CanvasToPPMFile("Clock", canvas.GetCanvas());

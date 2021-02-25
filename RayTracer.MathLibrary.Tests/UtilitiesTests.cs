@@ -17,5 +17,21 @@ namespace RayTracer.MathLibrary.Tests
                 Z = argZ
             }));
         }
+
+        [Test]
+        [TestCase(1, 0.9)]
+        [TestCase(1, 1.1)]
+        [TestCase(-1, -0.9)]
+        [TestCase(-1, -1.1)]
+        [TestCase(1, 1)]
+        [TestCase(-1, -1)]
+        [TestCase(1, 0.50001)]
+        [TestCase(1, 1.00001)]
+        [TestCase(-1, -0.50001)]
+        [TestCase(-1, -1.00001)]
+        public void CastDoubleToInt_WhenCalledWithDouble_CastToInt(int expected, double number)
+        {
+            Assert.AreEqual(expected, Utilities.CastDoubleToInt(number));
+        }
     }
 }

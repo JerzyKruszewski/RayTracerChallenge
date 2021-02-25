@@ -24,5 +24,20 @@ namespace RayTracer.MathLibrary
                 W = point.W
             };
         }
+
+        public static int CastDoubleToInt(double number)
+        {
+            if (number - (int)number >= 0.5f && number > 0)
+            {
+                return (int)number + 1;
+            }
+
+            if (number - (int)number < -0.5f && number <= 0)
+            {
+                return (int)number - 1;
+            }
+
+            return (int)number;
+        }
     }
 }
