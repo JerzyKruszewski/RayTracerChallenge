@@ -34,5 +34,86 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, ray.Position(time)));
         }
+
+        [Test]
+        //Stright through
+        [TestCase(0, 0, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  2)]
+        //At a tangent
+        [TestCase(0, 1, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  2)]
+        //Miss a sphere
+        [TestCase(0, 2, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  0)]
+        //Ray inside sphere
+        [TestCase(0, 0, 0,
+                  0, 0, 1,
+                  0, 0, 0,
+                  2)]
+        //Sphere behind ray
+        [TestCase(0, 0, 5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  2)]
+        public void Intersect_WhenCalled_ReturnIntersectionsCountWithSphere(double rayOriginX, double rayOriginY, double rayOriginZ,
+                                                                            double directionX, double directionY, double directionZ,
+                                                                            double sphereOriginX, double sphereOriginY, double sphereOriginZ,
+                                                                            int expectedIntersections)
+        {
+            Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
+            Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
+
+            Assert.AreEqual(expectedIntersections, ray.Intersect(sphere).Count);
+        }
+
+        [Test]
+        //Stright through
+        [TestCase(0, 0, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  4)]
+        [TestCase(0, 0, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  6)]
+        //At a tangent
+        [TestCase(0, 1, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  5)]
+        //Ray inside sphere
+        [TestCase(0, 0, 0,
+                  0, 0, 1,
+                  0, 0, 0,
+                  1)]
+        [TestCase(0, 0, 0,
+                  0, 0, 1,
+                  0, 0, 0,
+                  -1)]
+        //Sphere behind ray
+        [TestCase(0, 0, 5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  -4)]
+        [TestCase(0, 0, 5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  -6)]
+        public void Intersect_WhenCalled_CheckIfIntersectionWasFound(double rayOriginX, double rayOriginY, double rayOriginZ,
+                                                                     double directionX, double directionY, double directionZ,
+                                                                     double sphereOriginX, double sphereOriginY, double sphereOriginZ,
+                                                                     double expectedIntersection)
+        {
+            Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
+            Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
+
+            Assert.IsTrue(ray.Intersect(sphere).Contains(expectedIntersection));
+        }
     }
 }
