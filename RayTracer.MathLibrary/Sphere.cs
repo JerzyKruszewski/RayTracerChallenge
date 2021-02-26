@@ -28,5 +28,13 @@ namespace RayTracer.MathLibrary
                 return _origin;
             }
         }
+
+        public double Radius
+        {
+            get
+            {
+                return _radius;
+            }
+        }
     }
 }

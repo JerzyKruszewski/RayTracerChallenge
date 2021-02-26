@@ -34,7 +34,7 @@ namespace RayTracer.MathLibrary
 
             double a = Vector3.Dot(_direction, _direction);
             double b = 2 * Vector3.Dot(_direction, sphereOriginToRayOrigin);
-            double c = Vector3.Dot(sphereOriginToRayOrigin, sphereOriginToRayOrigin) - 1;
+            double c = Vector3.Dot(sphereOriginToRayOrigin, sphereOriginToRayOrigin) - sphere.Radius * sphere.Radius;
 
             double discriminant = b * b - 4 * a * c;
 
