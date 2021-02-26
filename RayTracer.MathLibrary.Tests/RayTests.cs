@@ -61,15 +61,15 @@ namespace RayTracer.MathLibrary.Tests
                   0, 0, 1,
                   0, 0, 0,
                   2)]
-        public void Intersect_WhenCalled_ReturnIntersectionsCountWithSphere(double rayOriginX, double rayOriginY, double rayOriginZ,
-                                                                            double directionX, double directionY, double directionZ,
-                                                                            double sphereOriginX, double sphereOriginY, double sphereOriginZ,
-                                                                            int expectedIntersections)
+        public void IntersectWithSphere_WhenCalled_ReturnIntersectionsCountWithSphere(double rayOriginX, double rayOriginY, double rayOriginZ,
+                                                                                      double directionX, double directionY, double directionZ,
+                                                                                      double sphereOriginX, double sphereOriginY, double sphereOriginZ,
+                                                                                      int expectedIntersections)
         {
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
             Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
-            Assert.AreEqual(expectedIntersections, ray.Intersect(sphere).Count);
+            Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Count);
         }
 
         [Test]
@@ -105,15 +105,15 @@ namespace RayTracer.MathLibrary.Tests
                   0, 0, 1,
                   0, 0, 0,
                   -6)]
-        public void Intersect_WhenCalled_CheckIfIntersectionWasFound(double rayOriginX, double rayOriginY, double rayOriginZ,
-                                                                     double directionX, double directionY, double directionZ,
-                                                                     double sphereOriginX, double sphereOriginY, double sphereOriginZ,
-                                                                     double expectedIntersection)
+        public void IntersectWithSphere_WhenCalled_CheckIfIntersectionWasFound(double rayOriginX, double rayOriginY, double rayOriginZ,
+                                                                               double directionX, double directionY, double directionZ,
+                                                                               double sphereOriginX, double sphereOriginY, double sphereOriginZ,
+                                                                               double expectedIntersection)
         {
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
             Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
-            Assert.IsTrue(ray.Intersect(sphere).Contains(expectedIntersection));
+            Assert.IsTrue(ray.IntersectWithSphere(sphere).Contains(expectedIntersection));
         }
     }
 }

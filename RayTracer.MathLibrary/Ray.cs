@@ -26,7 +26,7 @@ namespace RayTracer.MathLibrary
             return _origin + _direction * time;
         }
 
-        public List<double> Intersect(Sphere sphere)
+        public List<double> IntersectWithSphere(Sphere sphere)
         {
             List<double> intersections = new List<double>();
 
