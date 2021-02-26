@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RayTracer.MathLibrary
 {
-    public class Sphere
+    public class Sphere : IShape
     {
         private readonly Point3D _origin;
 
