@@ -70,7 +70,7 @@ namespace RayTracer.MathLibrary.Tests
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
             Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
-            Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Where(i => i.Object == sphere).ToList().Count);
+            Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Count);
         }
 
         [Test]
@@ -114,7 +114,41 @@ namespace RayTracer.MathLibrary.Tests
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
             Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
-            Assert.IsTrue(ray.IntersectWithSphere(sphere).FirstOrDefault(i => i.IntersectionTime == expectedIntersection && i.Object == sphere) != null);
+            Assert.IsTrue(ray.IntersectWithSphere(sphere).FirstOrDefault(i => i.IntersectionTime == expectedIntersection) != null);
+        }
+
+        [Test]
+        //Stright through
+        [TestCase(0, 0, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  4)]
+        //At a tangent
+        [TestCase(0, 1, -5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  5)]
+        //Ray inside sphere
+        [TestCase(0, 0, 0,
+                  0, 0, 1,
+                  0, 0, 0,
+                  1)]
+        //Sphere behind ray
+        [TestCase(0, 0, 5,
+                  0, 0, 1,
+                  0, 0, 0,
+                  null)]
+        public void Hit_WhenCalled_ReturnFirstIntersection(double rayOriginX, double rayOriginY, double rayOriginZ,
+                                                           double directionX, double directionY, double directionZ,
+                                                           double sphereOriginX, double sphereOriginY, double sphereOriginZ,
+                                                           double? expectedIntersection)
+        {
+            Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
+            Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
+
+            ray.IntersectWithSphere(sphere);
+
+            Assert.AreEqual(expectedIntersection, ray.Hit());
         }
     }
 }

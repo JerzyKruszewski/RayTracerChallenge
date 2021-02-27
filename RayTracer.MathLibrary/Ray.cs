@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RayTracer.MathLibrary
@@ -10,7 +11,7 @@ namespace RayTracer.MathLibrary
 
         private readonly Vector3 _direction;
 
-        private static IList<Intersection> _intersections = new List<Intersection>();
+        private readonly IList<Intersection> _intersections = new List<Intersection>();
 
         public Ray()
         {
@@ -52,14 +53,40 @@ namespace RayTracer.MathLibrary
             return GetIntersections();
         }
 
-        public static void AddIntersection(Intersection intersection)
+        public void AddIntersection(Intersection intersection)
         {
             _intersections.Add(intersection);
         }
 
-        public static IList<Intersection> GetIntersections()
+        public IList<Intersection> GetIntersections()
         {
             return _intersections;
+        }
+
+        public double? Hit()
+        {
+            if (_intersections.Count == 0)
+            {
+                return null;
+            }
+
+            double min = Double.MaxValue;
+
+            foreach (Intersection intersection in _intersections)
+            {
+                if (intersection.IntersectionTime >= 0.0 && intersection.IntersectionTime < min)
+                {
+                    min = intersection.IntersectionTime;
+                }
+            }
+
+            //Only negative numbers
+            if (min == Double.MaxValue)
+            {
+                return null;
+            }
+
+            return min;
         }
     }
 }
