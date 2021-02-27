@@ -10,6 +10,8 @@ namespace RayTracer.MathLibrary
 
         private readonly Vector3 _direction;
 
+        private static IList<Intersection> _intersections = new List<Intersection>();
+
         public Ray()
         {
 
@@ -26,10 +28,8 @@ namespace RayTracer.MathLibrary
             return _origin + _direction * time;
         }
 
-        public List<double> IntersectWithSphere(Sphere sphere)
+        public IList<Intersection> IntersectWithSphere(Sphere sphere)
         {
-            List<double> intersections = new List<double>();
-
             Vector3 sphereOriginToRayOrigin = _origin - sphere.Origin;
 
             double a = Vector3.Dot(_direction, _direction);
@@ -40,16 +40,26 @@ namespace RayTracer.MathLibrary
 
             if (discriminant > 0)
             {
-                intersections.Add((-b + Math.Sqrt(discriminant)) / (2 * a));
-                intersections.Add((-b - Math.Sqrt(discriminant)) / (2 * a));
+                AddIntersection(new Intersection((-b + Math.Sqrt(discriminant)) / (2 * a), sphere));
+                AddIntersection(new Intersection((-b - Math.Sqrt(discriminant)) / (2 * a), sphere));
             }
             else if (discriminant == 0)
             {
-                intersections.Add((-b) / (2 * a));
-                intersections.Add((-b) / (2 * a));
+                AddIntersection(new Intersection((-b) / (2 * a), sphere));
+                AddIntersection(new Intersection((-b) / (2 * a), sphere));
             }
 
-            return intersections;
+            return GetIntersections();
+        }
+
+        public static void AddIntersection(Intersection intersection)
+        {
+            _intersections.Add(intersection);
+        }
+
+        public static IList<Intersection> GetIntersections()
+        {
+            return _intersections;
         }
     }
 }

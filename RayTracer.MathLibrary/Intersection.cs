@@ -6,8 +6,6 @@ namespace RayTracer.MathLibrary
 {
     public class Intersection
     {
-        private static readonly IList<Intersection> _intersections = new List<Intersection>();
-
         private readonly double _intersectionTime;
 
         private readonly IShape _object;
@@ -23,14 +21,20 @@ namespace RayTracer.MathLibrary
             _object = shape;
         }
 
-        public static void AddIntersection(Intersection intersection)
+        public double IntersectionTime
         {
-            _intersections.Add(intersection);
+            get
+            {
+                return _intersectionTime;
+            }
         }
 
-        public static IEnumerable<Intersection> GetIntersections()
+        public IShape Object
         {
-            return _intersections;
+            get
+            {
+                return _object;
+            }
         }
     }
 }

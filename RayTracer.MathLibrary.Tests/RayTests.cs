@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using NUnit.Framework;
 
@@ -69,7 +70,7 @@ namespace RayTracer.MathLibrary.Tests
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
             Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
-            Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Count);
+            Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Where(i => i.Object == sphere).ToList().Count);
         }
 
         [Test]
@@ -113,7 +114,7 @@ namespace RayTracer.MathLibrary.Tests
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
             Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
-            Assert.IsTrue(ray.IntersectWithSphere(sphere).Contains(expectedIntersection));
+            Assert.IsTrue(ray.IntersectWithSphere(sphere).FirstOrDefault(i => i.IntersectionTime == expectedIntersection && i.Object == sphere) != null);
         }
     }
 }
