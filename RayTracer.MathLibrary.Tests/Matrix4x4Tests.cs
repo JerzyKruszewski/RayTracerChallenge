@@ -215,6 +215,18 @@ namespace RayTracer.MathLibrary.Tests
                          -3, 1, 7, 3,
                          1, 2, -9, 6,
                          -6, 7, 7, -9)]
+        [TestCase(-4, 1, 3, 1, 4,
+                      3, 9, 5, 15,
+                      0, 2, 1, 1,
+                      0, 4, 2, 3)]
+        [TestCase(9, 0, 1, 2, 0,
+                     1, 0, 3, 2,
+                     2, -2, -5, -1,
+                     3, -1, 1, 3)]
+        [TestCase(1, 1, 2, 1, 1,
+                     2, 1, 3, 1,
+                     1, 3, 1, 2,
+                     1, 1, 2, 1)]
         public void Det_WhenCalled_CalculateDet(double expected, double arg00, double arg01, double arg02, double arg03,
                                                                  double arg10, double arg11, double arg12, double arg13,
                                                                  double arg20, double arg21, double arg22, double arg23,
