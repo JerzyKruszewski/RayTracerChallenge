@@ -62,6 +62,22 @@ namespace RayTracer.MathLibrary
             return new Vector3(origin.X / scalar, origin.Y / scalar, origin.Z / scalar);
         }
 
+        public static bool operator ==(Vector3 arg1, Vector3 arg2)
+        {
+            return arg1.X == arg2.X &&
+                   arg1.Y == arg2.Y &&
+                   arg1.Z == arg2.Z &&
+                   arg1.W == arg2.W;
+        }
+
+        public static bool operator !=(Vector3 arg1, Vector3 arg2)
+        {
+            return arg1.X != arg2.X ||
+                   arg1.Y != arg2.Y ||
+                   arg1.Z != arg2.Z ||
+                   arg1.W != arg2.W;
+        }
+
         public static Vector3 NegateVector(Vector3 vector)
         {
             return new Vector3()

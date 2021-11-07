@@ -64,6 +64,22 @@ namespace RayTracer.MathLibrary
             return new Point3D(origin.X / scalar, origin.Y / scalar, origin.Z / scalar, origin.W / scalar);
         }
 
+        public static bool operator ==(Point3D arg1, Point3D arg2)
+        {
+            return arg1.X == arg2.X &&
+                   arg1.Y == arg2.Y &&
+                   arg1.Z == arg2.Z &&
+                   arg1.W == arg2.W;
+        }
+
+        public static bool operator !=(Point3D arg1, Point3D arg2)
+        {
+            return arg1.X != arg2.X ||
+                   arg1.Y != arg2.Y ||
+                   arg1.Z != arg2.Z ||
+                   arg1.W != arg2.W;
+        }
+
         public static Point3D NegatePoint(Point3D point)
         {
             return new Point3D(-point.X, -point.Y, -point.Z, -point.W);

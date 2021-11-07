@@ -24,28 +24,12 @@ namespace RayTracer.MathLibrary
             _radius = radius;
         }
 
-        public int Id 
-        { 
-            get
-            {
-                return _id;
-            }
-        }
+        public int Id => _id;
 
-        public Point3D Origin
-        {
-            get
-            {
-                return _origin;
-            }
-        }
+        public Point3D Origin => _origin;
 
-        public double Radius
-        {
-            get
-            {
-                return _radius;
-            }
-        }
+        public double Radius => _radius;
+
+        public Matrix4x4 Transformation { get; set; } = Matrix4x4.IdentityMatrix;
     }
 }

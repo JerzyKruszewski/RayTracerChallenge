@@ -24,6 +24,12 @@ namespace RayTracer.MathLibrary
             _direction = direction;
         }
 
+        public Point3D Origin => _origin;
+
+        public Vector3 Direction => _direction;
+
+        public IList<Intersection> Intersections => _intersections;
+
         public Point3D Position(double time)
         {
             return _origin + _direction * time;
@@ -31,10 +37,12 @@ namespace RayTracer.MathLibrary
 
         public IList<Intersection> IntersectWithSphere(Sphere sphere)
         {
-            Vector3 sphereOriginToRayOrigin = _origin - sphere.Origin;
+            Ray transformedRay = this.Transform(Matrix4x4.Inverse(sphere.Transformation));
 
-            double a = Vector3.Dot(_direction, _direction);
-            double b = 2 * Vector3.Dot(_direction, sphereOriginToRayOrigin);
+            Vector3 sphereOriginToRayOrigin = transformedRay.Origin - sphere.Origin;
+
+            double a = Vector3.Dot(transformedRay.Direction, transformedRay.Direction);
+            double b = 2 * Vector3.Dot(transformedRay.Direction, sphereOriginToRayOrigin);
             double c = Vector3.Dot(sphereOriginToRayOrigin, sphereOriginToRayOrigin) - sphere.Radius * sphere.Radius;
 
             double discriminant = b * b - 4 * a * c;
@@ -50,29 +58,24 @@ namespace RayTracer.MathLibrary
                 AddIntersection(new Intersection((-b) / (2 * a), sphere));
             }
 
-            return GetIntersections();
+            return Intersections;
         }
 
         public void AddIntersection(Intersection intersection)
         {
-            _intersections.Add(intersection);
-        }
-
-        public IList<Intersection> GetIntersections()
-        {
-            return _intersections;
+            Intersections.Add(intersection);
         }
 
         public double? Hit()
         {
-            if (_intersections.Count == 0)
+            if (Intersections.Count == 0)
             {
                 return null;
             }
 
             double min = Double.MaxValue;
 
-            foreach (Intersection intersection in _intersections)
+            foreach (Intersection intersection in Intersections)
             {
                 if (intersection.IntersectionTime >= 0.0 && intersection.IntersectionTime < min)
                 {
@@ -87,6 +90,11 @@ namespace RayTracer.MathLibrary
             }
 
             return min;
+        }
+
+        public Ray Transform(Matrix4x4 matrix)
+        {
+            return new Ray(matrix * _origin, matrix * _direction);
         }
     }
 }

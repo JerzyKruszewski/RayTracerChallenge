@@ -74,6 +74,30 @@ namespace RayTracer.MathLibrary.Tests
         }
 
         [Test]
+        public void IntersectWithSphere_WhenCalledWithScaledSphere_ReturnIntersectionsCountWithSphere()
+        {
+            int expectedIntersections = 2;
+            Ray ray = new Ray(new Point3D(0, 0, -5), new Vector3(0, 0, 1));
+            Sphere sphere = new Sphere(id: 1, new Point3D(0, 0, 0));
+
+            sphere.Transformation = Matrix4x4.ScalingMatrix(2, 2, 2);
+
+            Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Count);
+        }
+
+        [Test]
+        public void IntersectWithSphere_WhenCalledWithTranslatedSphereWhichWillNotBeHit_ReturnZeroIntersections()
+        {
+            int expectedIntersections = 0;
+            Ray ray = new Ray(new Point3D(0, 0, -5), new Vector3(0, 0, 1));
+            Sphere sphere = new Sphere(id: 1, new Point3D(0, 0, 0));
+
+            sphere.Transformation = Matrix4x4.TranslationMatrix(5, 0, 0);
+
+            Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Count);
+        }
+
+        [Test]
         //Stright through
         [TestCase(0, 0, -5,
                   0, 0, 1,
@@ -114,7 +138,20 @@ namespace RayTracer.MathLibrary.Tests
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
             Sphere sphere = new Sphere(id: 1, new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
-            Assert.IsTrue(ray.IntersectWithSphere(sphere).FirstOrDefault(i => i.IntersectionTime == expectedIntersection) != null);
+            Assert.IsTrue(ray.IntersectWithSphere(sphere).FirstOrDefault(i => i.IntersectionTime == expectedIntersection) != null); //contains intersection
+        }
+
+        [Test]
+        [TestCase(3)]
+        [TestCase(7)]
+        public void IntersectWithSphere_WhenCalledWithTransformedSphere_CheckIfIntersectionWasFound(double expectedIntersection)
+        {
+            Ray ray = new Ray(new Point3D(0,0,-5), new Vector3(0,0,1));
+            Sphere sphere = new Sphere(id: 1, new Point3D(0,0,0));
+
+            sphere.Transformation = Matrix4x4.ScalingMatrix(2, 2, 2);
+
+            Assert.IsTrue(ray.IntersectWithSphere(sphere).FirstOrDefault(i => i.IntersectionTime == expectedIntersection) != null); //contains intersection
         }
 
         [Test]
@@ -149,6 +186,50 @@ namespace RayTracer.MathLibrary.Tests
             ray.IntersectWithSphere(sphere);
 
             Assert.AreEqual(expectedIntersection, ray.Hit());
+        }
+
+        [Test]
+        public void Transform_WhenCalledWithTranslationMatrix_ChangeOriginPosition()
+        {
+            Point3D expectedOriginAfterTrans = new Point3D(4, 6, 8);
+            Ray ray = new Ray(new Point3D(1, 2, 3), new Vector3(0, 1, 0));
+
+            Ray transformed = ray.Transform(Matrix4x4.TranslationMatrix(3, 4, 5));
+
+            Assert.IsTrue(expectedOriginAfterTrans == transformed.Origin);
+        }
+
+        [Test]
+        public void Transform_WhenCalledWithTranslationMatrix_DoNotChangeVector()
+        {
+            Vector3 expectedDirection = new Vector3(0, 1, 0);
+            Ray ray = new Ray(new Point3D(1, 2, 3), new Vector3(0, 1, 0));
+
+            Ray transformed = ray.Transform(Matrix4x4.TranslationMatrix(3, 4, 5));
+
+            Assert.IsTrue(expectedDirection == transformed.Direction);
+        }
+
+        [Test]
+        public void Transform_WhenCalledWithScalingMatrix_ChangeOriginPosition()
+        {
+            Point3D expectedOriginAfterTrans = new Point3D(2, 6, 12);
+            Ray ray = new Ray(new Point3D(1, 2, 3), new Vector3(0, 1, 0));
+
+            Ray transformed = ray.Transform(Matrix4x4.ScalingMatrix(2, 3, 4));
+
+            Assert.IsTrue(expectedOriginAfterTrans == transformed.Origin);
+        }
+
+        [Test]
+        public void Transform_WhenCalledWithScalingMatrix_ScaleVector()
+        {
+            Vector3 expectedDirection = new Vector3(0, 3, 0);
+            Ray ray = new Ray(new Point3D(1, 2, 3), new Vector3(0, 1, 0));
+
+            Ray transformed = ray.Transform(Matrix4x4.ScalingMatrix(2, 3, 4));
+
+            Assert.IsTrue(expectedDirection == transformed.Direction);
         }
     }
 }

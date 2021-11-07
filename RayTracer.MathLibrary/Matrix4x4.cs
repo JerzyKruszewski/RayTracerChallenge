@@ -459,17 +459,17 @@ namespace RayTracer.MathLibrary
             return ScalingMatrix(x, y, z) * this;
         }
 
-        public Matrix4x4 RotateX(double angle)
+        public Matrix4x4 RotateX(double angle) //in radians
         {
             return RotationXMatrix(angle) * this;
         }
 
-        public Matrix4x4 RotateY(double angle)
+        public Matrix4x4 RotateY(double angle) //in radians
         {
             return RotationYMatrix(angle) * this;
         }
 
-        public Matrix4x4 RotateZ(double angle)
+        public Matrix4x4 RotateZ(double angle) //in radians
         {
             return RotationZMatrix(angle) * this;
         }
