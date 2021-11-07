@@ -6,5 +6,6 @@ namespace RayTracer.MathLibrary
 {
     public interface IShape
     {
+        public int Id { get; }
     }
 }

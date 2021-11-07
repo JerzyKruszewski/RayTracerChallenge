@@ -68,7 +68,7 @@ namespace RayTracer.MathLibrary.Tests
                                                                                       int expectedIntersections)
         {
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
-            Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
+            Sphere sphere = new Sphere(id: 1, new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
             Assert.AreEqual(expectedIntersections, ray.IntersectWithSphere(sphere).Count);
         }
@@ -112,7 +112,7 @@ namespace RayTracer.MathLibrary.Tests
                                                                                double expectedIntersection)
         {
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
-            Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
+            Sphere sphere = new Sphere(id: 1, new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
             Assert.IsTrue(ray.IntersectWithSphere(sphere).FirstOrDefault(i => i.IntersectionTime == expectedIntersection) != null);
         }
@@ -144,7 +144,7 @@ namespace RayTracer.MathLibrary.Tests
                                                            double? expectedIntersection)
         {
             Ray ray = new Ray(new Point3D(rayOriginX, rayOriginY, rayOriginZ), new Vector3(directionX, directionY, directionZ));
-            Sphere sphere = new Sphere(new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
+            Sphere sphere = new Sphere(id: 1, new Point3D(sphereOriginX, sphereOriginY, sphereOriginZ));
 
             ray.IntersectWithSphere(sphere);
 

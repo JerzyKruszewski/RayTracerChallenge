@@ -6,19 +6,30 @@ namespace RayTracer.MathLibrary
 {
     public class Sphere : IShape
     {
+        private readonly int _id;
+
         private readonly Point3D _origin;
 
         private readonly double _radius;
 
-        public Sphere()
+        public Sphere(int id)
         {
-
+            _id = id;
         }
 
-        public Sphere(Point3D origin, double radius = 1.0)
-        {
+        public Sphere(int id, Point3D origin, double radius = 1.0)
+            : this(id)
+        { 
             _origin = origin;
             _radius = radius;
+        }
+
+        public int Id 
+        { 
+            get
+            {
+                return _id;
+            }
         }
 
         public Point3D Origin
