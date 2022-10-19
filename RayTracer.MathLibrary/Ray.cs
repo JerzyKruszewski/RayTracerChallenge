@@ -63,7 +63,7 @@ namespace RayTracer.MathLibrary
 
         public void AddIntersection(Intersection intersection)
         {
-            Intersections.Add(intersection);
+            _intersections.Add(intersection);
         }
 
         public double? Hit()

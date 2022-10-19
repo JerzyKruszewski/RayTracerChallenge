@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracer.MathLibrary", "RayTracer.MathLibrary\RayTracer.MathLibrary.csproj", "{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracer.MathLibrary.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CannonTestProject", "CannonTestProject\CannonTestProject.csproj", "{420DE72A-809F-4837-BAE4-E3154984C7E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClockTestProject", "ClockTestProject\ClockTestProject.csproj", "{BC2DCE99-42CA-413E-A8D9-34276CFF6900}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClockTestProject", "ClockTestProject\ClockTestProject.csproj", "{BC2DCE99-42CA-413E-A8D9-34276CFF6900}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayCastingTestProject", "RayCastingTestProject\RayCastingTestProject.csproj", "{4602F17B-79AC-4781-A48A-2ACC66723B3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{BC2DCE99-42CA-413E-A8D9-34276CFF6900}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC2DCE99-42CA-413E-A8D9-34276CFF6900}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC2DCE99-42CA-413E-A8D9-34276CFF6900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4602F17B-79AC-4781-A48A-2ACC66723B3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4602F17B-79AC-4781-A48A-2ACC66723B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4602F17B-79AC-4781-A48A-2ACC66723B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4602F17B-79AC-4781-A48A-2ACC66723B3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
