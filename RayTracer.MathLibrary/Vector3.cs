@@ -42,6 +42,16 @@ namespace RayTracer.MathLibrary
             W = w;
         }
 
+        public Vector3 Reflect(Vector3 normal)
+        {
+            return this - normal * 2 * Dot(this, normal);
+        }
+
+        public override string ToString()
+        {
+            return $"({X}, {Y}, {Z}, {W})";
+        }
+
         public static Vector3 operator +(Vector3 origin, Vector3 vector)
         {
             return new Vector3(origin.X + vector.X, origin.Y + vector.Y, origin.Z + vector.Z);

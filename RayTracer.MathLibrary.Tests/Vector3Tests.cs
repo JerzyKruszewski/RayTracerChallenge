@@ -293,5 +293,27 @@ namespace RayTracer.MathLibrary.Tests
 
             Assert.IsTrue(Utilities.AreObjectEquals(expected, Vector3.Cross(vector1, vector2)));
         }
+
+        [Test]
+        public void Reflect_WhenCalledWithVectorApproachingAt45DegreesAngle_ReturnReflectionVector()
+        {
+            Vector3 vector = new Vector3(1, -1, 0);
+            Vector3 normal = new Vector3(0, 1, 0);
+
+            Vector3 reflectionVector = vector.Reflect(normal);
+
+            Assert.True(Utilities.AreObjectEquals(reflectionVector, new Vector3(1, 1, 0)));
+        }
+
+        [Test]
+        public void Reflect_WhenReflectingAVectorOffASlantedSurface_ReturnReflectionVector()
+        {
+            Vector3 vector = new Vector3(0, -1, 0);
+            Vector3 normal = new Vector3(Math.Sqrt(2) / 2, Math.Sqrt(2) / 2, 0);
+
+            Vector3 reflectionVector = vector.Reflect(normal);
+
+            Assert.True(Utilities.AreObjectEquals(reflectionVector, new Vector3(1, 0, 0)));
+        }
     }
 }

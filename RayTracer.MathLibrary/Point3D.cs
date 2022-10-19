@@ -34,6 +34,11 @@ namespace RayTracer.MathLibrary
             W = w;
         }
 
+        public override string ToString()
+        {
+            return $"({X}, {Y}, {Z}, {W})";
+        }
+
         public static Point3D operator +(Point3D origin, Vector3 vector)
         {
             return new Point3D(origin.X + vector.X, origin.Y + vector.Y, origin.Z + vector.Z, origin.W);

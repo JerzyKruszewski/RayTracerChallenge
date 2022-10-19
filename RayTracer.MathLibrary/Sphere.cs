@@ -31,5 +31,13 @@ namespace RayTracer.MathLibrary
         public double Radius => _radius;
 
         public Matrix4x4 Transformation { get; set; } = Matrix4x4.IdentityMatrix;
+
+        public Vector3 NormalAt(Point3D point)
+        {
+            Point3D pointInObjectSpace = Matrix4x4.Inverse(Transformation) * point;
+            Vector3 normal = Matrix4x4.Transpose(Matrix4x4.Inverse(Transformation)) * (pointInObjectSpace - _origin);
+            normal.W = 0;
+            return Vector3.Normalize(normal);
+        }
     }
 }
