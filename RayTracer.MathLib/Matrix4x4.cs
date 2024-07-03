@@ -325,8 +325,8 @@ public class Matrix4x4
                             (matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 2]) -
                             (matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 1]);
 
-        double det = (matrix._matrix[0, 0] * inv._matrix[0, 0] + matrix._matrix[0, 1] * inv._matrix[1, 0]) +
-                     (matrix._matrix[0, 2] * inv._matrix[2, 0] + matrix._matrix[0, 3] * inv._matrix[3, 0]);
+        double det = (matrix._matrix[0, 0] * inv._matrix[0, 0]) + (matrix._matrix[0, 1] * inv._matrix[1, 0]) +
+                     (matrix._matrix[0, 2] * inv._matrix[2, 0]) + (matrix._matrix[0, 3] * inv._matrix[3, 0]);
 
         if (det == 0.0)
         {
