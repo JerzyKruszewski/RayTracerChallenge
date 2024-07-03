@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using RayTracer.MathLibrary;
+using RayTracer.MathLib;
 
 namespace CannonTestProject
 {
@@ -33,13 +33,13 @@ namespace CannonTestProject
         {
             try
             {
-                canvas.WritePixel((int)projectile.Point.X, canvas.Height - (int)projectile.Point.Y, new Color(1f, 0f, 1f));
+                canvas.WritePixel((int)projectile.Point.X, canvas.Height - (int)projectile.Point.Y, new Color(1f, 1f, 1f));
             }
             catch (Exception)
             {
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
-                PPMFileStorage.CanvasToPPMFile("Cannon", canvas.GetCanvas());
+                PngFileStorage.CanvasToPNGFile("./Cannon.png", canvas.GetCanvas());
                 stopwatch.Stop();
                 Console.WriteLine($"{stopwatch.ElapsedMilliseconds}ms");
                 System.Environment.Exit(0);

@@ -1,4 +1,4 @@
-﻿using RayTracer.MathLibrary;
+﻿using RayTracer.MathLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +30,12 @@ namespace RayCastingTestProject
                     IList<Intersection> intersect = ray.IntersectWithSphere(Sphere);
                     if (ray.Hit().HasValue)
                     {
-                        canvas.WritePixel(j, i, new Color(255, 0, 0));
+                        canvas.WritePixel(j, i, new Color(1f, 0, 0));
                     }
                 }
             }
 
-            PPMFileStorage.CanvasToPPMFile("RayCastSphere", canvas.GetCanvas());
+            PngFileStorage.CanvasToPNGFile("./RayCastSphere.png", canvas.GetCanvas());
             Console.WriteLine("Done");
         }
     }
