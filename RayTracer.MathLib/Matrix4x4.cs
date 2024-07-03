@@ -80,10 +80,10 @@ public class Matrix4x4
         {
             for (int j = 0; j < 4; j++)
             {
-                result._matrix[i, j] = matrixA._matrix[i, 0] * matrixB._matrix[0, j] +
-                                       matrixA._matrix[i, 1] * matrixB._matrix[1, j] +
-                                       matrixA._matrix[i, 2] * matrixB._matrix[2, j] +
-                                       matrixA._matrix[i, 3] * matrixB._matrix[3, j];
+                result._matrix[i, j] = (matrixA._matrix[i, 0] * matrixB._matrix[0, j]) +
+                                       (matrixA._matrix[i, 1] * matrixB._matrix[1, j]) +
+                                       (matrixA._matrix[i, 2] * matrixB._matrix[2, j]) +
+                                       (matrixA._matrix[i, 3] * matrixB._matrix[3, j]);
             }
         }
 
