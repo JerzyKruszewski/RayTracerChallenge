@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace RayTracer.MathLib;
@@ -44,30 +45,30 @@ public class Matrix4x4
             */
 
             //Following code is 5 times faster
-            return _matrix[0, 0] * _matrix[1, 1] * _matrix[2, 2] * _matrix[3, 3] +
-                   _matrix[0, 0] * _matrix[1, 2] * _matrix[2, 3] * _matrix[3, 1] +
-                   _matrix[0, 0] * _matrix[1, 3] * _matrix[2, 1] * _matrix[3, 2] +
-                   _matrix[0, 1] * _matrix[1, 0] * _matrix[2, 3] * _matrix[3, 2] +
-                   _matrix[0, 1] * _matrix[1, 2] * _matrix[2, 0] * _matrix[3, 3] +
-                   _matrix[0, 1] * _matrix[1, 3] * _matrix[2, 2] * _matrix[3, 0] +
-                   _matrix[0, 2] * _matrix[1, 0] * _matrix[2, 1] * _matrix[3, 3] +
-                   _matrix[0, 2] * _matrix[1, 1] * _matrix[2, 3] * _matrix[3, 0] +
-                   _matrix[0, 2] * _matrix[1, 3] * _matrix[2, 0] * _matrix[3, 1] +
-                   _matrix[0, 3] * _matrix[1, 0] * _matrix[2, 2] * _matrix[3, 1] +
-                   _matrix[0, 3] * _matrix[1, 1] * _matrix[2, 0] * _matrix[3, 2] +
-                   _matrix[0, 3] * _matrix[1, 2] * _matrix[2, 1] * _matrix[3, 0] -
-                   _matrix[0, 0] * _matrix[1, 1] * _matrix[2, 3] * _matrix[3, 2] -
-                   _matrix[0, 0] * _matrix[1, 2] * _matrix[2, 1] * _matrix[3, 3] -
-                   _matrix[0, 0] * _matrix[1, 3] * _matrix[2, 2] * _matrix[3, 1] -
-                   _matrix[0, 1] * _matrix[1, 0] * _matrix[2, 2] * _matrix[3, 3] -
-                   _matrix[0, 1] * _matrix[1, 2] * _matrix[2, 3] * _matrix[3, 0] -
-                   _matrix[0, 1] * _matrix[1, 3] * _matrix[2, 0] * _matrix[3, 2] -
-                   _matrix[0, 2] * _matrix[1, 0] * _matrix[2, 3] * _matrix[3, 1] -
-                   _matrix[0, 2] * _matrix[1, 1] * _matrix[2, 0] * _matrix[3, 3] -
-                   _matrix[0, 2] * _matrix[1, 3] * _matrix[2, 1] * _matrix[3, 0] -
-                   _matrix[0, 3] * _matrix[1, 0] * _matrix[2, 1] * _matrix[3, 2] -
-                   _matrix[0, 3] * _matrix[1, 1] * _matrix[2, 2] * _matrix[3, 0] -
-                   _matrix[0, 3] * _matrix[1, 2] * _matrix[2, 0] * _matrix[3, 1];
+            return (_matrix[0, 0] * _matrix[1, 1] * _matrix[2, 2] * _matrix[3, 3]) +
+                   (_matrix[0, 0] * _matrix[1, 2] * _matrix[2, 3] * _matrix[3, 1]) +
+                   (_matrix[0, 0] * _matrix[1, 3] * _matrix[2, 1] * _matrix[3, 2]) +
+                   (_matrix[0, 1] * _matrix[1, 0] * _matrix[2, 3] * _matrix[3, 2]) +
+                   (_matrix[0, 1] * _matrix[1, 2] * _matrix[2, 0] * _matrix[3, 3]) +
+                   (_matrix[0, 1] * _matrix[1, 3] * _matrix[2, 2] * _matrix[3, 0]) +
+                   (_matrix[0, 2] * _matrix[1, 0] * _matrix[2, 1] * _matrix[3, 3]) +
+                   (_matrix[0, 2] * _matrix[1, 1] * _matrix[2, 3] * _matrix[3, 0]) +
+                   (_matrix[0, 2] * _matrix[1, 3] * _matrix[2, 0] * _matrix[3, 1]) +
+                   (_matrix[0, 3] * _matrix[1, 0] * _matrix[2, 2] * _matrix[3, 1]) +
+                   (_matrix[0, 3] * _matrix[1, 1] * _matrix[2, 0] * _matrix[3, 2]) +
+                   (_matrix[0, 3] * _matrix[1, 2] * _matrix[2, 1] * _matrix[3, 0]) -
+                   (_matrix[0, 0] * _matrix[1, 1] * _matrix[2, 3] * _matrix[3, 2]) -
+                   (_matrix[0, 0] * _matrix[1, 2] * _matrix[2, 1] * _matrix[3, 3]) -
+                   (_matrix[0, 0] * _matrix[1, 3] * _matrix[2, 2] * _matrix[3, 1]) -
+                   (_matrix[0, 1] * _matrix[1, 0] * _matrix[2, 2] * _matrix[3, 3]) -
+                   (_matrix[0, 1] * _matrix[1, 2] * _matrix[2, 3] * _matrix[3, 0]) -
+                   (_matrix[0, 1] * _matrix[1, 3] * _matrix[2, 0] * _matrix[3, 2]) -
+                   (_matrix[0, 2] * _matrix[1, 0] * _matrix[2, 3] * _matrix[3, 1]) -
+                   (_matrix[0, 2] * _matrix[1, 1] * _matrix[2, 0] * _matrix[3, 3]) -
+                   (_matrix[0, 2] * _matrix[1, 3] * _matrix[2, 1] * _matrix[3, 0]) -
+                   (_matrix[0, 3] * _matrix[1, 0] * _matrix[2, 1] * _matrix[3, 2]) -
+                   (_matrix[0, 3] * _matrix[1, 1] * _matrix[2, 2] * _matrix[3, 0]) -
+                   (_matrix[0, 3] * _matrix[1, 2] * _matrix[2, 0] * _matrix[3, 1]);
         }
     }
 
@@ -91,58 +92,53 @@ public class Matrix4x4
 
     public static Vector3 operator *(Matrix4x4 matrixA, Vector3 vector)
     {
-        Vector3 result = new Vector3();
-
-        result.X = matrixA._matrix[0, 0] * vector.X +
-                   matrixA._matrix[0, 1] * vector.Y +
-                   matrixA._matrix[0, 2] * vector.Z +
-                   matrixA._matrix[0, 3] * vector.W;
-
-        result.Y = matrixA._matrix[1, 0] * vector.X +
-                   matrixA._matrix[1, 1] * vector.Y +
-                   matrixA._matrix[1, 2] * vector.Z +
-                   matrixA._matrix[1, 3] * vector.W;
-
-        result.Z = matrixA._matrix[2, 0] * vector.X +
-                   matrixA._matrix[2, 1] * vector.Y +
-                   matrixA._matrix[2, 2] * vector.Z +
-                   matrixA._matrix[2, 3] * vector.W;
-
-        result.W = matrixA._matrix[3, 0] * vector.X +
-                   matrixA._matrix[3, 1] * vector.Y +
-                   matrixA._matrix[3, 2] * vector.Z +
-                   matrixA._matrix[3, 3] * vector.W;
+        Vector3 result = new Vector3
+        {
+            X = (matrixA._matrix[0, 0] * vector.X) +
+                (matrixA._matrix[0, 1] * vector.Y) +
+                (matrixA._matrix[0, 2] * vector.Z) +
+                (matrixA._matrix[0, 3] * vector.W),
+            Y = (matrixA._matrix[1, 0] * vector.X) +
+                (matrixA._matrix[1, 1] * vector.Y) +
+                (matrixA._matrix[1, 2] * vector.Z) +
+                (matrixA._matrix[1, 3] * vector.W),
+            Z = (matrixA._matrix[2, 0] * vector.X) +
+                (matrixA._matrix[2, 1] * vector.Y) +
+                (matrixA._matrix[2, 2] * vector.Z) +
+                (matrixA._matrix[2, 3] * vector.W),
+            W = (matrixA._matrix[3, 0] * vector.X) +
+                (matrixA._matrix[3, 1] * vector.Y) +
+                (matrixA._matrix[3, 2] * vector.Z) +
+                (matrixA._matrix[3, 3] * vector.W)
+        };
 
         return result;
     }
 
     public static Point3D operator *(Matrix4x4 matrixA, Point3D point)
     {
-        Point3D result = new Point3D();
-
-        result.X = matrixA._matrix[0, 0] * point.X +
-                   matrixA._matrix[0, 1] * point.Y +
-                   matrixA._matrix[0, 2] * point.Z +
-                   matrixA._matrix[0, 3] * point.W;
-
-        result.Y = matrixA._matrix[1, 0] * point.X +
-                   matrixA._matrix[1, 1] * point.Y +
-                   matrixA._matrix[1, 2] * point.Z +
-                   matrixA._matrix[1, 3] * point.W;
-
-        result.Z = matrixA._matrix[2, 0] * point.X +
-                   matrixA._matrix[2, 1] * point.Y +
-                   matrixA._matrix[2, 2] * point.Z +
-                   matrixA._matrix[2, 3] * point.W;
-
-        result.W = matrixA._matrix[3, 0] * point.X +
-                   matrixA._matrix[3, 1] * point.Y +
-                   matrixA._matrix[3, 2] * point.Z +
-                   matrixA._matrix[3, 3] * point.W;
+        Point3D result = new Point3D
+        {
+            X = (matrixA._matrix[0, 0] * point.X) +
+                (matrixA._matrix[0, 1] * point.Y) +
+                (matrixA._matrix[0, 2] * point.Z) +
+                (matrixA._matrix[0, 3] * point.W),
+            Y = (matrixA._matrix[1, 0] * point.X) +
+                (matrixA._matrix[1, 1] * point.Y) +
+                (matrixA._matrix[1, 2] * point.Z) +
+                (matrixA._matrix[1, 3] * point.W),
+            Z = (matrixA._matrix[2, 0] * point.X) +
+                (matrixA._matrix[2, 1] * point.Y) +
+                (matrixA._matrix[2, 2] * point.Z) +
+                (matrixA._matrix[2, 3] * point.W),
+            W = (matrixA._matrix[3, 0] * point.X) +
+                (matrixA._matrix[3, 1] * point.Y) +
+                (matrixA._matrix[3, 2] * point.Z) +
+                (matrixA._matrix[3, 3] * point.W)
+        };
 
         return result;
     }
-
 
     public static bool operator ==(Matrix4x4 matrixA, Matrix4x4 matrixB)
     {
@@ -217,120 +213,120 @@ public class Matrix4x4
         //this code is 5 times faster
         Matrix4x4 inv = new Matrix4x4();
 
-        inv._matrix[0, 0] = matrix._matrix[1, 1] * matrix._matrix[2, 2] * matrix._matrix[3, 3] -
-                            matrix._matrix[1, 1] * matrix._matrix[2, 3] * matrix._matrix[3, 2] -
-                            matrix._matrix[2, 1] * matrix._matrix[1, 2] * matrix._matrix[3, 3] +
-                            matrix._matrix[2, 1] * matrix._matrix[1, 3] * matrix._matrix[3, 2] +
-                            matrix._matrix[3, 1] * matrix._matrix[1, 2] * matrix._matrix[2, 3] -
-                            matrix._matrix[3, 1] * matrix._matrix[1, 3] * matrix._matrix[2, 2];
+        inv._matrix[0, 0] = (matrix._matrix[1, 1] * matrix._matrix[2, 2] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[1, 1] * matrix._matrix[2, 3] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[2, 1] * matrix._matrix[1, 2] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[2, 1] * matrix._matrix[1, 3] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[3, 1] * matrix._matrix[1, 2] * matrix._matrix[2, 3]) -
+                            (matrix._matrix[3, 1] * matrix._matrix[1, 3] * matrix._matrix[2, 2]);
 
-        inv._matrix[1, 0] = -matrix._matrix[1, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 3] +
-                            matrix._matrix[1, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 2] +
-                            matrix._matrix[2, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 3] -
-                            matrix._matrix[2, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 2] -
-                            matrix._matrix[3, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 3] +
-                            matrix._matrix[3, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 2];
+        inv._matrix[1, 0] = (-matrix._matrix[1, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 3]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 2]);
 
-        inv._matrix[2, 0] = matrix._matrix[1, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 3] -
-                            matrix._matrix[1, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 1] -
-                            matrix._matrix[2, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 3] +
-                            matrix._matrix[2, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 1] +
-                            matrix._matrix[3, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 3] -
-                            matrix._matrix[3, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 1];
+        inv._matrix[2, 0] = (matrix._matrix[1, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[1, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 1]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 1]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 3]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 1]);
 
-        inv._matrix[3, 0] = -matrix._matrix[1, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 2] +
-                            matrix._matrix[1, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 1] +
-                            matrix._matrix[2, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 2] -
-                            matrix._matrix[2, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 1] -
-                            matrix._matrix[3, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 2] +
-                            matrix._matrix[3, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 1];
+        inv._matrix[3, 0] = (-matrix._matrix[1, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 1]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 1]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 2]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 1]);
 
-        inv._matrix[0, 1] = -matrix._matrix[0, 1] * matrix._matrix[2, 2] * matrix._matrix[3, 3] +
-                            matrix._matrix[0, 1] * matrix._matrix[2, 3] * matrix._matrix[3, 2] +
-                            matrix._matrix[2, 1] * matrix._matrix[0, 2] * matrix._matrix[3, 3] -
-                            matrix._matrix[2, 1] * matrix._matrix[0, 3] * matrix._matrix[3, 2] -
-                            matrix._matrix[3, 1] * matrix._matrix[0, 2] * matrix._matrix[2, 3] +
-                            matrix._matrix[3, 1] * matrix._matrix[0, 3] * matrix._matrix[2, 2];
+        inv._matrix[0, 1] = (-matrix._matrix[0, 1] * matrix._matrix[2, 2] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[0, 1] * matrix._matrix[2, 3] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[2, 1] * matrix._matrix[0, 2] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[2, 1] * matrix._matrix[0, 3] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[3, 1] * matrix._matrix[0, 2] * matrix._matrix[2, 3]) +
+                            (matrix._matrix[3, 1] * matrix._matrix[0, 3] * matrix._matrix[2, 2]);
 
-        inv._matrix[1, 1] = matrix._matrix[0, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 3] -
-                            matrix._matrix[0, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 2] -
-                            matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 3] +
-                            matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 2] +
-                            matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 3] -
-                            matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 2];
+        inv._matrix[1, 1] = (matrix._matrix[0, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[0, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 3]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 2]);
 
-        inv._matrix[2, 1] = -matrix._matrix[0, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 3] +
-                            matrix._matrix[0, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 1] +
-                            matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 3] -
-                            matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 1] -
-                            matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 3] +
-                            matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 1];
+        inv._matrix[2, 1] = (-matrix._matrix[0, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[0, 0] * matrix._matrix[2, 3] * matrix._matrix[3, 1]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 1]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 3]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 1]);
 
-        inv._matrix[3, 1] = matrix._matrix[0, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 2] -
-                            matrix._matrix[0, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 1] -
-                            matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 2] +
-                            matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 1] +
-                            matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 2] -
-                            matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 1];
+        inv._matrix[3, 1] = (matrix._matrix[0, 0] * matrix._matrix[2, 1] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[0, 0] * matrix._matrix[2, 2] * matrix._matrix[3, 1]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 1]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 2]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 1]);
 
-        inv._matrix[0, 2] = matrix._matrix[0, 1] * matrix._matrix[1, 2] * matrix._matrix[3, 3] -
-                            matrix._matrix[0, 1] * matrix._matrix[1, 3] * matrix._matrix[3, 2] -
-                            matrix._matrix[1, 1] * matrix._matrix[0, 2] * matrix._matrix[3, 3] +
-                            matrix._matrix[1, 1] * matrix._matrix[0, 3] * matrix._matrix[3, 2] +
-                            matrix._matrix[3, 1] * matrix._matrix[0, 2] * matrix._matrix[1, 3] -
-                            matrix._matrix[3, 1] * matrix._matrix[0, 3] * matrix._matrix[1, 2];
+        inv._matrix[0, 2] = (matrix._matrix[0, 1] * matrix._matrix[1, 2] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[0, 1] * matrix._matrix[1, 3] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[1, 1] * matrix._matrix[0, 2] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[1, 1] * matrix._matrix[0, 3] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[3, 1] * matrix._matrix[0, 2] * matrix._matrix[1, 3]) -
+                            (matrix._matrix[3, 1] * matrix._matrix[0, 3] * matrix._matrix[1, 2]);
 
-        inv._matrix[1, 2] = -matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 3] +
-                            matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 2] +
-                            matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 3] -
-                            matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 2] -
-                            matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 3] +
-                            matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 2];
+        inv._matrix[1, 2] = (-matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 3]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 2]);
 
-        inv._matrix[2, 2] = matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 3] -
-                            matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 1] -
-                            matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 3] +
-                            matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 1] +
-                            matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 3] -
-                            matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 1];
+        inv._matrix[2, 2] = (matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 3]) -
+                            (matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[3, 1]) -
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 3]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[3, 1]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 3]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 1]);
 
-        inv._matrix[3, 2] = -matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 2] +
-                            matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 1] +
-                            matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 2] -
-                            matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 1] -
-                            matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 2] +
-                            matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 1];
+        inv._matrix[3, 2] = (-matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[3, 2]) +
+                            (matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[3, 1]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[3, 2]) -
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[3, 1]) -
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 2]) +
+                            (matrix._matrix[3, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 1]);
 
-        inv._matrix[0, 3] = -matrix._matrix[0, 1] * matrix._matrix[1, 2] * matrix._matrix[2, 3] +
-                            matrix._matrix[0, 1] * matrix._matrix[1, 3] * matrix._matrix[2, 2] +
-                            matrix._matrix[1, 1] * matrix._matrix[0, 2] * matrix._matrix[2, 3] -
-                            matrix._matrix[1, 1] * matrix._matrix[0, 3] * matrix._matrix[2, 2] -
-                            matrix._matrix[2, 1] * matrix._matrix[0, 2] * matrix._matrix[1, 3] +
-                            matrix._matrix[2, 1] * matrix._matrix[0, 3] * matrix._matrix[1, 2];
+        inv._matrix[0, 3] = (-matrix._matrix[0, 1] * matrix._matrix[1, 2] * matrix._matrix[2, 3]) +
+                            (matrix._matrix[0, 1] * matrix._matrix[1, 3] * matrix._matrix[2, 2]) +
+                            (matrix._matrix[1, 1] * matrix._matrix[0, 2] * matrix._matrix[2, 3]) -
+                            (matrix._matrix[1, 1] * matrix._matrix[0, 3] * matrix._matrix[2, 2]) -
+                            (matrix._matrix[2, 1] * matrix._matrix[0, 2] * matrix._matrix[1, 3]) +
+                            (matrix._matrix[2, 1] * matrix._matrix[0, 3] * matrix._matrix[1, 2]);
 
-        inv._matrix[1, 3] = matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 3] -
-                            matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 2] -
-                            matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 3] +
-                            matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 2] +
-                            matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 3] -
-                            matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 2];
+        inv._matrix[1, 3] = (matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 3]) -
+                            (matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 2]) -
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 3]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 2]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 3]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 2]);
 
-        inv._matrix[2, 3] = -matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 3] +
-                            matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 1] +
-                            matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 3] -
-                            matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 1] -
-                            matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 3] +
-                            matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 1];
+        inv._matrix[2, 3] = (-matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 3]) +
+                            (matrix._matrix[0, 0] * matrix._matrix[1, 3] * matrix._matrix[2, 1]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 3]) -
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 3] * matrix._matrix[2, 1]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 3]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 3] * matrix._matrix[1, 1]);
 
-        inv._matrix[3, 3] = matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 2] -
-                            matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 1] -
-                            matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 2] +
-                            matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 1] +
-                            matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 2] -
-                            matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 1];
+        inv._matrix[3, 3] = (matrix._matrix[0, 0] * matrix._matrix[1, 1] * matrix._matrix[2, 2]) -
+                            (matrix._matrix[0, 0] * matrix._matrix[1, 2] * matrix._matrix[2, 1]) -
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 1] * matrix._matrix[2, 2]) +
+                            (matrix._matrix[1, 0] * matrix._matrix[0, 2] * matrix._matrix[2, 1]) +
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 1] * matrix._matrix[1, 2]) -
+                            (matrix._matrix[2, 0] * matrix._matrix[0, 2] * matrix._matrix[1, 1]);
 
-        double det = matrix._matrix[0, 0] * inv._matrix[0, 0] + matrix._matrix[0, 1] * inv._matrix[1, 0] +
-                     matrix._matrix[0, 2] * inv._matrix[2, 0] + matrix._matrix[0, 3] * inv._matrix[3, 0];
+        double det = (matrix._matrix[0, 0] * inv._matrix[0, 0] + matrix._matrix[0, 1] * inv._matrix[1, 0]) +
+                     (matrix._matrix[0, 2] * inv._matrix[2, 0] + matrix._matrix[0, 3] * inv._matrix[3, 0]);
 
         if (det == 0.0)
         {
