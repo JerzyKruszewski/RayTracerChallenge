@@ -1,4 +1,4 @@
-﻿using RayTracer.MathLibrary;
+﻿using RayTracer.MathLib;
 using System;
 
 namespace ClockTestProject
@@ -6,7 +6,7 @@ namespace ClockTestProject
     internal class Program
     {
         public const int NumberOfPixels = 12;
-        public static Canvas canvas = new Canvas(400, 400);
+        public static Canvas canvas = new Canvas(100, 100);
         public static Point3D currentLocation = new Point3D(0, 0, 0, 1);
         public static Point3D screenSpaceLocation = new Point3D(0, 0, 0, 1);
 
@@ -25,10 +25,10 @@ namespace ClockTestProject
 
                 canvas.WritePixel(Utilities.CastDoubleToInt(screenSpaceLocation.X),
                                   canvas.Height - Utilities.CastDoubleToInt(screenSpaceLocation.Y),
-                                  new Color(255, 255, 255));
+                                  new Color(1f, 1f, 1f));
             }
 
-            PPMFileStorage.CanvasToPPMFile("Clock", canvas.GetCanvas());
+            PngFileStorage.CanvasToPNGFile("./Clock.png", canvas.GetCanvas());
         }
     }
 }

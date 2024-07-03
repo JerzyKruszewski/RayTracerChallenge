@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracer.MathLibrary", "RayTracer.MathLibrary\RayTracer.MathLibrary.csproj", "{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracer.MathLibrary.Tests", "RayTracer.MathLibrary.Tests\RayTracer.MathLibrary.Tests.csproj", "{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CannonTestProject", "CannonTestProject\CannonTestProject.csproj", "{420DE72A-809F-4837-BAE4-E3154984C7E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClockTestProject", "ClockTestProject\ClockTestProject.csproj", "{BC2DCE99-42CA-413E-A8D9-34276CFF6900}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayCastingTestProject", "RayCastingTestProject\RayCastingTestProject.csproj", "{4602F17B-79AC-4781-A48A-2ACC66723B3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayCastingTestProject", "RayCastingTestProject\RayCastingTestProject.csproj", "{4602F17B-79AC-4781-A48A-2ACC66723B3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.MathLib", "RayTracer.MathLib\RayTracer.MathLib.csproj", "{8C9A66E9-0BDE-42EE-BBAF-5201FFEF4C9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.MathLib.Tests", "RayTracer.MathLib.Tests\RayTracer.MathLib.Tests.csproj", "{DA8F6FF1-016A-4C6E-820F-94165DDB057B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4CAE1C2-2F12-45A0-AF58-B4E078F96986}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAF1BF59-B91E-43B3-B866-EE5222E1BC76}.Release|Any CPU.Build.0 = Release|Any CPU
 		{420DE72A-809F-4837-BAE4-E3154984C7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{420DE72A-809F-4837-BAE4-E3154984C7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420DE72A-809F-4837-BAE4-E3154984C7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +31,14 @@ Global
 		{4602F17B-79AC-4781-A48A-2ACC66723B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4602F17B-79AC-4781-A48A-2ACC66723B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4602F17B-79AC-4781-A48A-2ACC66723B3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9A66E9-0BDE-42EE-BBAF-5201FFEF4C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9A66E9-0BDE-42EE-BBAF-5201FFEF4C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9A66E9-0BDE-42EE-BBAF-5201FFEF4C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9A66E9-0BDE-42EE-BBAF-5201FFEF4C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8F6FF1-016A-4C6E-820F-94165DDB057B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8F6FF1-016A-4C6E-820F-94165DDB057B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8F6FF1-016A-4C6E-820F-94165DDB057B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8F6FF1-016A-4C6E-820F-94165DDB057B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

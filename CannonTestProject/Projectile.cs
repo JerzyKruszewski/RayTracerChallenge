@@ -1,4 +1,4 @@
-﻿using RayTracer.MathLibrary;
+﻿using RayTracer.MathLib;
 using System;
 using System.Collections.Generic;
 using System.Text;
