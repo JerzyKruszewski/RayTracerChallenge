@@ -33,12 +33,12 @@ public class Matrix3x3
     {
         get
         {
-            return _matrix[0, 0] * _matrix[1, 1] * _matrix[2, 2] +
-                   _matrix[1, 0] * _matrix[2, 1] * _matrix[0, 2] +
-                   _matrix[2, 0] * _matrix[0, 1] * _matrix[1, 2] -
-                   _matrix[0, 2] * _matrix[1, 1] * _matrix[2, 0] -
-                   _matrix[1, 2] * _matrix[2, 1] * _matrix[0, 0] -
-                   _matrix[2, 2] * _matrix[0, 1] * _matrix[1, 0];
+            return (_matrix[0, 0] * _matrix[1, 1] * _matrix[2, 2]) +
+                   (_matrix[1, 0] * _matrix[2, 1] * _matrix[0, 2]) +
+                   (_matrix[2, 0] * _matrix[0, 1] * _matrix[1, 2]) -
+                   (_matrix[0, 2] * _matrix[1, 1] * _matrix[2, 0]) -
+                   (_matrix[1, 2] * _matrix[2, 1] * _matrix[0, 0]) -
+                   (_matrix[2, 2] * _matrix[0, 1] * _matrix[1, 0]);
         }
     }
 
@@ -50,9 +50,9 @@ public class Matrix3x3
         {
             for (int j = 0; j < 3; j++)
             {
-                result._matrix[i, j] = matrixA._matrix[i, 0] * matrixB._matrix[0, j] +
-                                       matrixA._matrix[i, 1] * matrixB._matrix[1, j] +
-                                       matrixA._matrix[i, 2] * matrixB._matrix[2, j];
+                result._matrix[i, j] = (matrixA._matrix[i, 0] * matrixB._matrix[0, j]) +
+                                       (matrixA._matrix[i, 1] * matrixB._matrix[1, j]) +
+                                       (matrixA._matrix[i, 2] * matrixB._matrix[2, j]);
             }
         }
 
@@ -61,19 +61,18 @@ public class Matrix3x3
 
     public static Vector3 operator *(Matrix3x3 matrixA, Vector3 vector)
     {
-        Vector3 result = new Vector3();
-
-        result.X = matrixA._matrix[0, 0] * vector.X +
-                   matrixA._matrix[0, 1] * vector.Y +
-                   matrixA._matrix[0, 2] * vector.Z;
-
-        result.Y = matrixA._matrix[1, 0] * vector.X +
-                   matrixA._matrix[1, 1] * vector.Y +
-                   matrixA._matrix[1, 2] * vector.Z;
-
-        result.Z = matrixA._matrix[2, 0] * vector.X +
-                   matrixA._matrix[2, 1] * vector.Y +
-                   matrixA._matrix[2, 2] * vector.Z;
+        Vector3 result = new Vector3
+        {
+            X = (matrixA._matrix[0, 0] * vector.X) +
+                (matrixA._matrix[0, 1] * vector.Y) +
+                (matrixA._matrix[0, 2] * vector.Z),
+            Y = (matrixA._matrix[1, 0] * vector.X) +
+                (matrixA._matrix[1, 1] * vector.Y) +
+                (matrixA._matrix[1, 2] * vector.Z),
+            Z = (matrixA._matrix[2, 0] * vector.X) +
+                (matrixA._matrix[2, 1] * vector.Y) +
+                (matrixA._matrix[2, 2] * vector.Z)
+        };
 
         return result;
     }
@@ -84,7 +83,7 @@ public class Matrix3x3
         {
             for (int j = 0; j < 3; j++)
             {
-                if (!MathHelper.AreNumbersEqual(matrixA._matrix[i,j], matrixB._matrix[i, j]))
+                if (!MathHelper.AreNumbersEqual(matrixA._matrix[i, j], matrixB._matrix[i, j]))
                 {
                     return false;
                 }
@@ -146,15 +145,15 @@ public class Matrix3x3
         double h = matrix._matrix[2, 1];
         double i = matrix._matrix[2, 2];
 
-        result._matrix[0, 0] = (e * i - f * h) / det;
-        result._matrix[0, 1] = -(b * i - c * h) / det;
-        result._matrix[0, 2] = (b * f - c * e) / det;
-        result._matrix[1, 0] = -(d * i - f * g) / det;
-        result._matrix[1, 1] = (a * i - c * g) / det;
-        result._matrix[1, 2] = -(a * f - c * d) / det;
-        result._matrix[2, 0] = (d * h - e * g) / det;
-        result._matrix[2, 1] = -(a * h - b * g) / det;
-        result._matrix[2, 2] = (a * e - b * d) / det;
+        result._matrix[0, 0] = ((e * i) - (f * h)) / det;
+        result._matrix[0, 1] = -((b * i) - (c * h)) / det;
+        result._matrix[0, 2] = ((b * f) - (c * e)) / det;
+        result._matrix[1, 0] = -((d * i) - (f * g)) / det;
+        result._matrix[1, 1] = ((a * i) - (c * g)) / det;
+        result._matrix[1, 2] = -((a * f) - (c * d)) / det;
+        result._matrix[2, 0] = ((d * h) - (e * g)) / det;
+        result._matrix[2, 1] = -((a * h) - (b * g)) / det;
+        result._matrix[2, 2] = ((a * e) - (b * d)) / det;
 
         return result;
     }
