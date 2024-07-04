@@ -14,7 +14,6 @@ public class Color : IColor
 
     public Color()
     {
-
     }
 
     public Color(double red, double green, double blue)
