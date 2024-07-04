@@ -16,7 +16,6 @@ public class Point3D : IObjectIn3DSpace
 
     public Point3D()
     {
-
     }
 
     public Point3D(double x, double y, double z)
