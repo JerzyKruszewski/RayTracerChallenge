@@ -30,7 +30,7 @@ public class Matrix2x2
     {
         get
         {
-            return _matrix[0, 0] * _matrix[1, 1] - _matrix[0, 1] * _matrix[1, 0];
+            return (_matrix[0, 0] * _matrix[1, 1]) - (_matrix[0, 1] * _matrix[1, 0]);
         }
     }
 
@@ -42,8 +42,8 @@ public class Matrix2x2
         {
             for (int j = 0; j < 2; j++)
             {
-                result._matrix[i, j] = matrixA._matrix[i, 0] * matrixB._matrix[0, j] +
-                                       matrixA._matrix[i, 1] * matrixB._matrix[1, j];
+                result._matrix[i, j] = (matrixA._matrix[i, 0] * matrixB._matrix[0, j]) +
+                                       (matrixA._matrix[i, 1] * matrixB._matrix[1, j]);
             }
         }
 
