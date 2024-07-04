@@ -15,7 +15,6 @@ public class Ray
 
     public Ray()
     {
-
     }
 
     public Ray(Point3D origin, Vector3 direction)
@@ -32,20 +31,20 @@ public class Ray
 
     public Point3D Position(double time)
     {
-        return _origin + _direction * time;
+        return _origin + (_direction * time);
     }
 
     public IList<Intersection> IntersectWithSphere(Sphere sphere)
     {
-        Ray transformedRay = this.Transform(Matrix4x4.Inverse(sphere.Transformation));
+        Ray transformedRay = Transform(Matrix4x4.Inverse(sphere.Transformation));
 
         Vector3 sphereOriginToRayOrigin = transformedRay.Origin - sphere.Origin;
 
         double a = Vector3.Dot(transformedRay.Direction, transformedRay.Direction);
         double b = 2 * Vector3.Dot(transformedRay.Direction, sphereOriginToRayOrigin);
-        double c = Vector3.Dot(sphereOriginToRayOrigin, sphereOriginToRayOrigin) - sphere.Radius * sphere.Radius;
+        double c = Vector3.Dot(sphereOriginToRayOrigin, sphereOriginToRayOrigin) - (sphere.Radius * sphere.Radius);
 
-        double discriminant = b * b - 4 * a * c;
+        double discriminant = (b * b) - (4 * a * c);
 
         if (discriminant > 0)
         {
