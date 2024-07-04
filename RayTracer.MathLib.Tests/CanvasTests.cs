@@ -67,5 +67,4 @@ public class CanvasTests
 
         Color.AreColorsEqual(expected, canvasTable[x, y]).Should().BeTrue();
     }
-
 }
