@@ -20,11 +20,11 @@ namespace RayCastingTestProject
 
             for (int i = 0; i < canvas.Height; i++)
             {
-                double worldY = half - pixelSize * i;
+                double worldY = half - (pixelSize * i);
 
                 for (int j = 0; j < canvas.Width; j++)
                 {
-                    double worldX = half - pixelSize * j;
+                    double worldX = half - (pixelSize * j);
                     Point3D position = new Point3D(worldX, worldY, WallZCord);
                     Ray ray = new Ray(cameraLoc, Vector3.Normalize(position - cameraLoc));
                     IList<Intersection> intersect = ray.IntersectWithSphere(Sphere);
