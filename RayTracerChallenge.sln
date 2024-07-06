@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClockTestProject", "ClockTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayCastingTestProject", "RayCastingTestProject\RayCastingTestProject.csproj", "{4602F17B-79AC-4781-A48A-2ACC66723B3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.MathLib", "RayTracer.MathLib\RayTracer.MathLib.csproj", "{8C9A66E9-0BDE-42EE-BBAF-5201FFEF4C9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracer.MathLib", "RayTracer.MathLib\RayTracer.MathLib.csproj", "{8C9A66E9-0BDE-42EE-BBAF-5201FFEF4C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.MathLib.Tests", "RayTracer.MathLib.Tests\RayTracer.MathLib.Tests.csproj", "{DA8F6FF1-016A-4C6E-820F-94165DDB057B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracer.MathLib.Tests", "RayTracer.MathLib.Tests\RayTracer.MathLib.Tests.csproj", "{DA8F6FF1-016A-4C6E-820F-94165DDB057B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.MathLib.Benchmarks", "RayTracer.MathLib.Benchmarks\RayTracer.MathLib.Benchmarks.csproj", "{E9A491FB-9553-4D15-AFF4-116AABB38BF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DA8F6FF1-016A-4C6E-820F-94165DDB057B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8F6FF1-016A-4C6E-820F-94165DDB057B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8F6FF1-016A-4C6E-820F-94165DDB057B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9A491FB-9553-4D15-AFF4-116AABB38BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9A491FB-9553-4D15-AFF4-116AABB38BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9A491FB-9553-4D15-AFF4-116AABB38BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9A491FB-9553-4D15-AFF4-116AABB38BF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
