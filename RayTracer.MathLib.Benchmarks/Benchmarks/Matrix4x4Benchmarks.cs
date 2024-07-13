@@ -57,4 +57,24 @@ public class Matrix4x4Benchmarks
                      -6, 7, 7, -9);
         RayTracer.MathLib.Matrix4x4 double4x4Inv = RayTracer.MathLib.Matrix4x4.Inverse(double4x4);
     }
+
+    [Benchmark]
+    public void GetSubmatrixFloat()
+    {
+        ExperimentalClasses._32Bit.Matrix4x4 float4x4 = new(-2, -8, 3, 5,
+                     -3, 1, 7, 3,
+                     1, 2, -9, 6,
+                     -6, 7, 7, -9);
+        ExperimentalClasses._32Bit.Matrix3x3 float3x3 = ExperimentalClasses._32Bit.Matrix4x4.GetSubmatrix(float4x4, 0, 0);
+    }
+
+    [Benchmark]
+    public void GetSubmatrixDouble()
+    {
+        RayTracer.MathLib.Matrix4x4 double4x4 = new(-2, -8, 3, 5,
+                     -3, 1, 7, 3,
+                     1, 2, -9, 6,
+                     -6, 7, 7, -9);
+        RayTracer.MathLib.Matrix3x3 double3x3 = RayTracer.MathLib.Matrix4x4.GetSubmatrix(double4x4, 0, 0);
+    }
 }
