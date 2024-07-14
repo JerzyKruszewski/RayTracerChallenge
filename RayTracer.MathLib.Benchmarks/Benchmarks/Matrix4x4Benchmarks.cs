@@ -77,4 +77,44 @@ public class Matrix4x4Benchmarks
                      -6, 7, 7, -9);
         RayTracer.MathLib.Matrix3x3 double3x3 = RayTracer.MathLib.Matrix4x4.GetSubmatrix(double4x4, 0, 0);
     }
+
+    [Benchmark]
+    public void GetMinorFloat()
+    {
+        ExperimentalClasses._32Bit.Matrix4x4 float4x4 = new(-2, -8, 3, 5,
+                     -3, 1, 7, 3,
+                     1, 2, -9, 6,
+                     -6, 7, 7, -9);
+        _ = ExperimentalClasses._32Bit.Matrix4x4.GetMinor(float4x4, 0, 0);
+    }
+
+    [Benchmark]
+    public void GetMinorDouble()
+    {
+        RayTracer.MathLib.Matrix4x4 double4x4 = new(-2, -8, 3, 5,
+                     -3, 1, 7, 3,
+                     1, 2, -9, 6,
+                     -6, 7, 7, -9);
+        _ = RayTracer.MathLib.Matrix4x4.GetMinor(double4x4, 0, 0);
+    }
+
+    [Benchmark]
+    public void GetCofactorFloat()
+    {
+        ExperimentalClasses._32Bit.Matrix4x4 float4x4 = new(-2, -8, 3, 5,
+                     -3, 1, 7, 3,
+                     1, 2, -9, 6,
+                     -6, 7, 7, -9);
+        _ = ExperimentalClasses._32Bit.Matrix4x4.GetCofactor(float4x4, 0, 0);
+    }
+
+    [Benchmark]
+    public void GetCofactorDouble()
+    {
+        RayTracer.MathLib.Matrix4x4 double4x4 = new(-2, -8, 3, 5,
+                     -3, 1, 7, 3,
+                     1, 2, -9, 6,
+                     -6, 7, 7, -9);
+        _ = RayTracer.MathLib.Matrix4x4.GetCofactor(double4x4, 0, 0);
+    }
 }
